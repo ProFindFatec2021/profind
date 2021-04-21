@@ -17,18 +17,15 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $usuario = Usuario::select('id')->where('email', $request->email)->where('senha', md5($request->senha))->first();
-        Auth::loginUsingId($usuario->id);
-        if (Auth::loginUsingId($usuario->id)) {
+        if ($usuario && Auth::loginUsingId($usuario->id)) {
             $request->session()->regenerate();
 
-            return back()->withErrors([
-                'login' => 'Sucesso'
-            ]);
+            return redirect()->route('usuario.show');
         }
 
 
         return back()->withErrors([
-            'login' => 'Erro!',
+            'login' => 'Erro ao fazer login!',
         ]);
     }
 
@@ -40,8 +37,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return back()->withErrors([
-            'logout' => 'Logout'
-        ]);
+        return redirect()->route('login');
     }
 }

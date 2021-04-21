@@ -6,6 +6,8 @@
 
 <form method="POST" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="tipo"
+        value="{{Route::currentRouteName() === 'usuario.create.profissional' ? 1 : 0}}">
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome">

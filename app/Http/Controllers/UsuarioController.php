@@ -60,7 +60,7 @@ class UsuarioController extends Controller
             'telefone' => $request->telefone,
             'email' => $request->email,
             'senha' => md5($request->senha),
-            'tipo' => 1,
+            'tipo' => $request->tipo,
             'foto_perfil' => $nome_imagem ?? null,
         ]);
 

@@ -18,12 +18,4 @@
 
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
-
-
-@auth
-<div class="mt-2">
-  <a href="/logout" class="btn btn-warning">Sair</a>
-  {{ auth()->user()->nome }}
-</div>
-@endauth
 @endsection
