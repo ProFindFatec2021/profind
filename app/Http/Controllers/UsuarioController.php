@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UsuarioController extends Controller
 {
@@ -14,9 +15,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
-
-        dd($usuarios);
+        dd(Usuario::all());
     }
 
     /**
@@ -38,19 +37,32 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => ['unique:usuarios'],
-            'telefone' => ['unique:usuarios'],
+            'nome' => ['required'],
+            'telefone' => ['required', 'unique:usuarios'],
+            'email' => ['required', 'unique:usuarios'],
+            'senha' => ['required'],
         ]);
+
+        if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {
+            $extensao = $request->foto_perfil->extension();
+
+            $nome_imagem = 'foto_perfil_' . $request->nome . '_' . Str::random(25) . '.' . $extensao;
+
+            $upload = $request->foto_perfil->storeAs('usuarios', $nome_imagem);
+
+            if (!$upload) return redirect()->back()->with('error', 'Falha ao enviar imagem');
+        }
 
         $usuario = Usuario::create([
             'nome' => $request->nome,
             'telefone' => $request->telefone,
             'email' => $request->email,
             'senha' => md5($request->senha),
-            'tipo' => $request->tipo,
-            'foto_perfil' => $request->foto_perfil,
+            'tipo' => 1,
+            'foto_perfil' => $nome_imagem,
         ]);
-        dd($usuario);
+
+        dd($usuario, Usuario::all());
     }
 
     /**
