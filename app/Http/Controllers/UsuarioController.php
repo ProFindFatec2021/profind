@@ -46,11 +46,13 @@ class UsuarioController extends Controller
         if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {
             $extensao = $request->foto_perfil->extension();
 
-            $nome_imagem = 'foto_perfil_' . $request->nome . '_' . Str::random(25) . '.' . $extensao;
+            $nome_imagem = 'foto_perfil_' . str_replace(' ', '_', $request->nome) . '_' . Str::random(25) . '.' . $extensao;
 
             $upload = $request->foto_perfil->storeAs('usuarios', $nome_imagem);
 
-            if (!$upload) return redirect()->back()->with('error', 'Falha ao enviar imagem');
+            if (!$upload) return back()->withErrors([
+                'foto_perfil', 'Falha ao enviar imagem'
+            ]);
         }
 
         $usuario = Usuario::create([
@@ -59,7 +61,7 @@ class UsuarioController extends Controller
             'email' => $request->email,
             'senha' => md5($request->senha),
             'tipo' => 1,
-            'foto_perfil' => $nome_imagem,
+            'foto_perfil' => $nome_imagem ?? null,
         ]);
 
         dd($usuario, Usuario::all());
@@ -73,7 +75,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        return 'aa';
     }
 
     /**

@@ -1,15 +1,36 @@
 @extends("layouts.backend")
 
-@section("tipo-cadastro", "Profissional")
+@section('content')
+<h1 class="text-white text-center">Profind</h1>
+<h2 class="text-white text-center">Cadastro @yield('tipo-cadastro')</h2>
 
-@section('form')
 <form method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="text" placeholder="Nome" name="nome" id="nome">
-    <input type="text" placeholder="Telefone" name="telefone" id="telefone">
-    <input type="text" placeholder="Email" name="email" id="email">
-    <input type="password" placeholder="Senha" name="senha" id="senha">
-    <input type="file" name="foto_perfil" id="foto_perfil">
-    <button type="submit">Enviar</button>
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome">
+    </div>
+
+    <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" placeholder="Telefone" name="telefone" id="telefone">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" placeholder="Email" name="email" id="email">
+    </div>
+
+    <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha">
+    </div>
+
+    <div class="form-group">
+        <label for="foto_perfil">Foto de perfil</label>
+        <input type="file" class="form-control-file" name="foto_perfil" id="foto_perfil">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 @endsection

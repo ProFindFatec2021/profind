@@ -4,66 +4,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro @yield('tipo-cadastro') | ProFind</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>ProFind</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            text-align: center
-        }
-
-        .content {
-            max-width: 600px;
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            background: #f5f5f5;
-            padding: 5rem
-        }
-
-        h1,
-        h2 {
-            margin: .5rem 0;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        input {
-            width: calc(100% - 2rem);
-            margin: .5rem 0;
-            padding: .5rem 1rem;
-        }
-
-        li {
-          color: red;
-        }
     </style>
 </head>
 
-<body style="background-color: #333" class="antialiased">
+<body class="bg-secondary text-white">
     @if ($errors->any())
     <div class="alert alert-danger">
-        <ul>
+        <ul class="alert alert-danger">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
     @endif
-    <div class="content">
-        <h1>Profind</h1>
-        <h2>Cadastro @yield('tipo-cadastro')</h2>
-        @yield('form')
+    <div class="container">
+        @yield('content')
     </div>
 </body>
 
