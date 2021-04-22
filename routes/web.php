@@ -17,6 +17,7 @@ Route::name('usuario.')->group(function () {
         Route::get('/cadastro-cliente', [UsuarioController::class, 'create'])->name('cliente');
         Route::get('/cadastro-profissional', [UsuarioController::class, 'create'])->name('profissional');
     });
-    Route::post('/cadastro', [UsuarioController::class, 'store'])->name('store');
+    Route::post('/cadastro-cliente', [UsuarioController::class, 'store'])->name('store');
+    Route::post('/cadastro-profissional', [UsuarioController::class, 'store'])->name('store');
     Route::get('/perfil', [UsuarioController::class, 'show'])->name('show')->middleware('auth');
 });
