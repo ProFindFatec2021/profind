@@ -29,5 +29,6 @@ Route::name('usuario.')->group(function () {
         Route::get('/perfil', [UsuarioController::class, 'show'])->name('show');
         Route::get('/perfil/editar', [UsuarioController::class, 'edit'])->name('edit');
         Route::put('/perfil/editar', [UsuarioController::class, 'update'])->name('update');
+        Route::delete('/perfil/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
     });
 });

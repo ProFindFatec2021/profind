@@ -3,6 +3,13 @@
 @section('content')
 <h1 class="text-white text-center">Profind</h1>
 <a href="{{route('usuario.edit')}}" class="btn btn-primary w-25 d-block mx-auto">Editar perfil</a>
+<form action="{{route('usuario.destroy')}}" method="post">
+  @csrf
+  @method('delete')
+  <button onclick="return confirm('Deseja mesmo deletar sua conta?')" type="submit"
+    class="btn btn-danger w-25 d-block mx-auto">Deletar perfil</button>
+
+</form>
 
 <table class="table table-light table-striped table-bordered">
   <thead class="thead-dark">

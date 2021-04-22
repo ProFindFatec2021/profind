@@ -49,6 +49,7 @@ class UsuarioController extends Controller
             'foto_perfil' => $nome_imagem ?? null,
         ]);
 
+        //Adicionar verificação de email
         dd($usuario, Usuario::all());
     }
 
@@ -82,6 +83,10 @@ class UsuarioController extends Controller
 
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario = $usuario->where('id', Auth::id())->delete();
+
+        return redirect()->route('login')->withErrors([
+            'Conta deletada com sucesso'
+        ]);
     }
 }
