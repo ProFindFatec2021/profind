@@ -10,21 +10,23 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
+        @guest
         <li class="nav-item">
           <a class="nav-link" href="{{route('usuario.create.cliente')}}">Cadastro de cliente</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{route('usuario.create.profissional')}}">Cadastro de profissional</a>
         </li>
+        @endguest
       </ul>
 
-      <div class="ml-auto">
+      <div class="ml-auto d-flex">
         @auth
-          <a href="{{route('usuario.show')}}" class="text-dark">Olá, {{ auth()->user()->nome }}</a>
-          <a href="{{route('logout')}}" class="btn btn-warning">Sair</a>
+        <a href="{{route('usuario.show')}}" class="nav-link">Olá, {{ auth()->user()->nome }}</a>
+        <a href="{{route('logout')}}" class="btn btn-warning">Sair</a>
         @endauth
         @guest
-          <a href="{{route('login')}}">Fazer Login</a>
+        <a href="{{route('login')}}" class="nav-link">Fazer Login</a>
         @endguest
       </div>
     </div>
