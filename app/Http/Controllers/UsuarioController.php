@@ -52,7 +52,6 @@ class UsuarioController extends Controller
         dd($usuario, Usuario::all());
     }
 
-
     public function show(Usuario $usuario)
     {
         $usuario = $usuario->where('id', Auth::id())->first();
@@ -61,12 +60,24 @@ class UsuarioController extends Controller
 
     public function edit(Usuario $usuario)
     {
-        //
+        $usuario = $usuario->where('id', Auth::id())->first();
+        return view('usuario.edit', ['usuario' => $usuario]);
     }
 
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $request->validate([
+            'nome' => ['required'],
+            'telefone' => ['required', 'unique:usuarios,telefone,' . Auth::id()],
+            'email' => ['required', 'unique:usuarios,email,' . Auth::id()],
+        ]);
+
+        Usuario::where('id', Auth::id())->update([
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+        ]);
+        return redirect()->route('usuario.show');
     }
 
     public function destroy(Usuario $usuario)

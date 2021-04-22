@@ -28,6 +28,6 @@ Route::name('usuario.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/perfil', [UsuarioController::class, 'show'])->name('show');
         Route::get('/perfil/editar', [UsuarioController::class, 'edit'])->name('edit');
-        Route::post('/perfil/editar', [UsuarioController::class, 'show'])->name('show');
+        Route::put('/perfil/editar', [UsuarioController::class, 'update'])->name('update');
     });
 });
