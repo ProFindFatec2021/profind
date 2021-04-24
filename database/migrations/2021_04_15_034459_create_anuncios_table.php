@@ -19,7 +19,7 @@ class CreateAnunciosTable extends Migration
             $table->text('descricao');
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('categoria_id')->constrained('categorias');
-            $table->string('diretorio_imagem');
+            $table->string('foto_anuncio')->nullable();
             $table->timestamps();
         });
     }

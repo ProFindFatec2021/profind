@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnuncioUsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
@@ -25,10 +26,16 @@ Route::name('usuario.')->group(function () {
         Route::post('/cadastro-profissional', [UsuarioController::class, 'store'])->name('profissional');
     });
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/perfil', [UsuarioController::class, 'show'])->name('show');
-        Route::get('/perfil/editar', [UsuarioController::class, 'edit'])->name('edit');
-        Route::put('/perfil/editar', [UsuarioController::class, 'update'])->name('update');
-        Route::delete('/perfil/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
+    Route::prefix('perfil')->middleware('auth')->group(function () {
+        Route::get('/', [UsuarioController::class, 'show'])->name('show');
+        Route::get('/editar', [UsuarioController::class, 'edit'])->name('edit');
+        Route::put('/editar', [UsuarioController::class, 'update'])->name('update');
+        Route::delete('/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
+
+        Route::prefix('anuncios')->name('anuncio.')->middleware('auth')->group(function () {
+            Route::get('/', [AnuncioUsuarioController::class, 'index'])->name('index');
+            Route::get('/criar', [AnuncioUsuarioController::class, 'create'])->name('create');
+            Route::post('/criar', [AnuncioUsuarioController::class, 'store'])->name('store');
+        });
     });
 });

@@ -13,11 +13,6 @@ class Usuario extends Authenticatable
 
     protected $fillable = ['nome', 'telefone', 'email', 'senha', 'tipo', 'foto_perfil'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'senha'
     ];

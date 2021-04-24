@@ -33,7 +33,7 @@ class UsuarioController extends Controller
 
             $nome_imagem = 'foto_perfil_' . str_replace(' ', '_', $request->nome) . '_' . Str::random(25) . '.' . $extensao;
 
-            $upload = $request->foto_perfil->storeAs('usuarios', $nome_imagem);
+            $upload = $request->foto_perfil->storeAs('usuarios/perfil', $nome_imagem);
 
             if (!$upload) return back()->withErrors([
                 'foto_perfil', 'Falha ao enviar imagem'
