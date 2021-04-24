@@ -57,12 +57,26 @@ class AnuncioUsuarioController extends Controller
         return view('usuario.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
     }
 
-    public function edit(Anuncio $anuncio)
+    public function edit(Anuncio $anuncio, $id)
     {
+        return view('usuario.anuncio.edit', ['anuncio' => Anuncio::where('id', $id)->first(), 'categorias' => Categoria::all()]);
     }
 
-    public function update(Request $request, Anuncio $anuncio)
+    public function update(Request $request, Anuncio $anuncio, $id)
     {
+        $request->validate([
+            'nome' => ['required'],
+            'descricao' => ['required'],
+            'categoria' => ['required'],
+        ]);
+
+        Anuncio::where('id', $id)->update([
+            'nome' => $request->nome,
+            'descricao' => $request->descricao,
+            'categoria_id' => $request->categoria,
+        ]);
+
+        return redirect()->route('usuario.anuncio.show', ['id' => $id]);
     }
 
     public function destroy(Anuncio $anuncio, $id)

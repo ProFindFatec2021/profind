@@ -22,7 +22,8 @@
     </div>
     @endif
 
-
+    <h1 class="text-white text-center">Profind</h1>
+    <h2 class="text-white text-center">@yield('subtitulo')</h2>
     <div class="container">
         @yield('content')
     </div>

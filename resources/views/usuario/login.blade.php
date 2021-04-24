@@ -1,9 +1,8 @@
 @extends("layouts.backend")
 
-@section('content')
-<h1 class="text-white text-center">Profind</h1>
-<h2 class="text-white text-center">Login</h2>
+@section('subtitulo', 'Login')
 
+@section('content')
 <form method="POST">
   @csrf
   <div class="form-group">

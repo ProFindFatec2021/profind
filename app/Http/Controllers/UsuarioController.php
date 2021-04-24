@@ -40,7 +40,7 @@ class UsuarioController extends Controller
             ]);
         }
 
-        $usuario = Usuario::create([
+        Usuario::create([
             'nome' => $request->nome,
             'telefone' => $request->telefone,
             'email' => $request->email,
@@ -49,8 +49,7 @@ class UsuarioController extends Controller
             'foto_perfil' => $nome_imagem ?? null,
         ]);
 
-        //Adicionar verificação de email
-        dd($usuario, Usuario::all());
+        return redirect()->route('login');
     }
 
     public function show(Usuario $usuario)

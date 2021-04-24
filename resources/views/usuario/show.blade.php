@@ -1,8 +1,8 @@
 @extends("layouts.backend")
 
+@section('subtitulo', 'Perfil')
+
 @section('content')
-<h1 class="text-white text-center">Profind</h1>
-<h2 class="text-white text-center">Perfil</h2>
 <a href="{{route('usuario.anuncio.index')}}" class="btn btn-info my-2 w-25 d-block mx-auto">Ver anúncios</a>
 <a href="{{route('usuario.edit')}}" class="btn btn-primary my-2 w-25 d-block mx-auto">Editar perfil</a>
 <form action="{{route('usuario.destroy')}}" method="post">

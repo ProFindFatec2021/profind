@@ -1,9 +1,8 @@
 @extends("layouts.backend")
 
-@section('content')
-<h1 class="text-white text-center">Profind</h1>
-<h2 class="text-white text-center">Criar anúncio</h2>
+@section('subtitulo', 'Criar anúncio')
 
+@section('content')
 <form method="POST" enctype="multipart/form-data">
   @csrf
 
