@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Type\Integer;
 
 class AnuncioUsuarioController extends Controller
 {
@@ -40,7 +41,7 @@ class AnuncioUsuarioController extends Controller
             ]);
         }
 
-        $anuncio = Anuncio::create([
+        Anuncio::create([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
             'usuario_id' => Auth::id(),
@@ -48,12 +49,12 @@ class AnuncioUsuarioController extends Controller
             'foto_anuncio' => $nome_imagem ?? null,
         ]);
 
-        //Adicionar verificação de email
-        dd($anuncio, Anuncio::all());
+        return redirect()->route('usuario.anuncio.index');
     }
 
-    public function show(Anuncio $anuncio)
+    public function show(Anuncio $anuncio, $id)
     {
+        return view('usuario.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
     }
 
     public function edit(Anuncio $anuncio)
@@ -64,7 +65,12 @@ class AnuncioUsuarioController extends Controller
     {
     }
 
-    public function destroy(Anuncio $anuncio)
+    public function destroy(Anuncio $anuncio, $id)
     {
+        $anuncio->where('id', $id)->delete();
+
+        return redirect()->route('usuario.anuncio.index')->withErrors([
+            'Anúncio deletado com sucesso'
+        ]);
     }
 }

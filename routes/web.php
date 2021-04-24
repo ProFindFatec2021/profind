@@ -36,6 +36,10 @@ Route::name('usuario.')->group(function () {
             Route::get('/', [AnuncioUsuarioController::class, 'index'])->name('index');
             Route::get('/criar', [AnuncioUsuarioController::class, 'create'])->name('create');
             Route::post('/criar', [AnuncioUsuarioController::class, 'store'])->name('store');
+            Route::get('/anuncio/{id}', [AnuncioUsuarioController::class, 'show'])->name('show');
+            Route::get('/anuncio/{id}/editar', [AnuncioUsuarioController::class, 'edit'])->name('edit');
+            Route::put('/anuncio/{id}/editar', [AnuncioUsuarioController::class, 'update'])->name('update');
+            Route::delete('/anuncio/{id}/deletar', [AnuncioUsuarioController::class, 'destroy'])->name('destroy');
         });
     });
 });
