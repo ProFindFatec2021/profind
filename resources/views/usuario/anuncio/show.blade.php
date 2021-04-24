@@ -2,6 +2,7 @@
 
 @section('content')
 <h1 class="text-white text-center">Profind</h1>
+<h2 class="text-white text-center">Ver anúncio</h2>
 <a href="{{route('usuario.anuncio.edit', ['id' => $anuncio->id])}}"
   class="btn btn-primary my-2 w-25 d-block mx-auto">Editar anúncio</a>
 <form action="{{route('usuario.anuncio.destroy', ['id' => $anuncio->id])}}" method="post">

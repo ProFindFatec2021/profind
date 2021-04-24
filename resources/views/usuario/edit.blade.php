@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="text-white text-center">Profind</h1>
-
+<h2 class="text-white text-center">Editar perfil</h2>
 <form method="POST" enctype="multipart/form-data">
   @method('PUT')
   @csrf

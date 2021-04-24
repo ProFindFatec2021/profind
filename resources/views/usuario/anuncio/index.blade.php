@@ -2,6 +2,7 @@
 
 @section('content')
 <h1 class="text-white text-center">Profind</h1>
+<h2 class="text-white text-center">Anúncios</h2>
 <a href="{{route('usuario.anuncio.create')}}" class="btn btn-success my-2 w-25 d-block mx-auto">Criar anúncio</a>
 
 <table class="table table-light table-striped table-bordered">
