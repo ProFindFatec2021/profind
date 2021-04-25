@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anuncio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,7 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        dd(Usuario::all());
+        return view('usuario.index', ['usuarios' => Usuario::where('tipo', 1)->get()]);
     }
 
     public function create()
@@ -52,10 +53,10 @@ class UsuarioController extends Controller
         return redirect()->route('login');
     }
 
-    public function show(Usuario $usuario)
+    public function perfil(Usuario $usuario)
     {
-        $usuario = $usuario->where('id', Auth::id())->first();
-        return view('usuario.show', ['usuario' => $usuario]);
+        $usuario = Usuario::where('id', Auth::id())->first();
+        return view('usuario.perfil', ['usuario' => $usuario]);
     }
 
     public function edit(Usuario $usuario)
@@ -76,8 +77,10 @@ class UsuarioController extends Controller
             'nome' => $request->nome,
             'telefone' => $request->telefone,
             'email' => $request->email,
+            'tipo' => $request->tipo ? 1 : 0,
         ]);
-        return redirect()->route('usuario.show');
+
+        return redirect()->route('usuario.perfil');
     }
 
     public function destroy(Usuario $usuario)
@@ -87,5 +90,18 @@ class UsuarioController extends Controller
         return redirect()->route('login')->withErrors([
             'Conta deletada com sucesso'
         ]);
+    }
+
+    public function show($id)
+    {
+        $usuario = Usuario::where('id', $id)->first();
+        return view('usuario.show', ['usuario' => $usuario]);
+    }
+
+    public function indexAnuncios($id)
+    {
+        $anuncios = Anuncio::where('usuario_id', $id)->get();
+        $usuario = Usuario::where('id', $id)->first();
+        return view('usuario.anuncio.index', ['anuncios' => $anuncios, 'nome' => $usuario->nome]);
     }
 }

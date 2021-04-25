@@ -1,11 +1,8 @@
 @extends("layouts.backend")
 
-@section('subtitulo', 'Usuário')
+@section('subtitulo', 'Profissionais')
 
 @section('content')
-<a href="{{route('usuario.anuncio', ['id' => $usuario->id])}}" class="btn btn-info my-2 w-25 d-block mx-auto">Ver
-  anúncios</a>
-
 <table class="table table-light table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
@@ -20,9 +17,14 @@
     </tr>
   </thead>
   <tbody>
+    @foreach ($usuarios as $usuario)
     <tr>
       <th scope="row">{{$usuario->id}}</th>
-      <td>{{$usuario->nome}}</td>
+      <td>
+        <a href="{{route('usuario.show', ['id' => $usuario->id])}}">
+          {{$usuario->nome}}
+        </a>
+      </td>
       <td>{{$usuario->email}}</td>
       <td>{{$usuario->telefone}}</td>
       <td>{{$usuario->tipo == 1 ? 'Profissional' : 'Cliente'}}</td>
@@ -33,6 +35,7 @@
       <td>{{$usuario->created_at}}</td>
       <td>{{$usuario->updated_at}}</td>
     </tr>
+    @endforeach
   </tbody>
 </table>
 

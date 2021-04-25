@@ -1,11 +1,16 @@
 @extends("layouts.backend")
 
-@section('subtitulo', 'Usuário')
+@section('subtitulo', 'Perfil')
 
 @section('content')
-<a href="{{route('usuario.anuncio', ['id' => $usuario->id])}}" class="btn btn-info my-2 w-25 d-block mx-auto">Ver
-  anúncios</a>
-
+<a href="{{route('usuario.perfil.anuncio.index')}}" class="btn btn-info my-2 w-25 d-block mx-auto">Ver anúncios</a>
+<a href="{{route('usuario.perfil.edit')}}" class="btn btn-primary my-2 w-25 d-block mx-auto">Editar perfil</a>
+<form action="{{route('usuario.perfil.destroy')}}" method="post">
+  @csrf
+  @method('delete')
+  <button onclick="return confirm('Deseja mesmo deletar sua conta?')" type="submit"
+    class="btn btn-danger my-2 w-25 d-block mx-auto">Deletar perfil</button>
+</form>
 <table class="table table-light table-striped table-bordered">
   <thead class="thead-dark">
     <tr>

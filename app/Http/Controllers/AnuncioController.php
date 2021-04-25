@@ -14,7 +14,7 @@ class AnuncioController extends Controller
      */
     public function index()
     {
-        //
+        return view('anuncio.index', ['anuncios' => Anuncio::all()]);
     }
 
     /**
@@ -44,9 +44,9 @@ class AnuncioController extends Controller
      * @param  \App\Models\Anuncio  $anuncio
      * @return \Illuminate\Http\Response
      */
-    public function show(Anuncio $anuncio)
+    public function show(Anuncio $anuncio, $id)
     {
-        //
+        return view('anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
     }
 
     /**

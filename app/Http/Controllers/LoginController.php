@@ -11,6 +11,8 @@ class LoginController extends Controller
 
     public function login()
     {
+        if (Auth::check())
+            return redirect()->route('usuario.perfil');
         return view('usuario.login');
     }
 
@@ -20,7 +22,7 @@ class LoginController extends Controller
         if ($usuario && Auth::loginUsingId($usuario->id)) {
             $request->session()->regenerate();
 
-            return redirect()->route('usuario.show');
+            return redirect()->route('usuario.perfil');
         }
 
 

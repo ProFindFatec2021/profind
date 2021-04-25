@@ -1,9 +1,17 @@
 @extends("layouts.backend")
 
-@section('subtitulo', 'Anúncios de ' . $nome)
-
+@section('subtitulo', 'Ver anúncio')
 
 @section('content')
+<a href="{{route('usuario.perfil.anuncio.edit', ['id' => $anuncio->id])}}"
+  class="btn btn-primary my-2 w-25 d-block mx-auto">Editar anúncio</a>
+<form action="{{route('usuario.perfil.anuncio.destroy', ['id' => $anuncio->id])}}" method="post">
+  @csrf
+  @method('delete')
+  <button onclick="return confirm('Deseja mesmo deletar este anúncio?')" type="submit"
+    class="btn btn-danger my-2 w-25 d-block mx-auto">Deletar anúncio</button>
+</form>
+
 <table class="table table-light table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
@@ -17,15 +25,9 @@
     </tr>
   </thead>
   <tbody>
-
-    @foreach ($anuncios as $anuncio)
     <tr>
       <th scope="row">{{$anuncio->id}}</th>
-      <td>
-        <a href="{{route('anuncio.show', ['id' => $anuncio])}}">
-          {{$anuncio->nome}}
-        </a>
-      </td>
+      <td>{{$anuncio->nome}}</td>
       <td>{{$anuncio->descricao}}</td>
       <td>{{$anuncio->categoria->nome}}</td>
       <td>
@@ -35,7 +37,6 @@
       <td>{{$anuncio->created_at}}</td>
       <td>{{$anuncio->updated_at}}</td>
     </tr>
-    @endforeach
   </tbody>
 </table>
 @endsection

@@ -13,12 +13,12 @@ class AnuncioUsuarioController extends Controller
 {
     public function index()
     {
-        return view('usuario.anuncio.index', ['anuncios' => Anuncio::where('usuario_id', Auth::id())->get()]);
+        return view('usuario.perfil.anuncio.index', ['anuncios' => Anuncio::where('usuario_id', Auth::id())->get()]);
     }
 
     public function create()
     {
-        return view('usuario.anuncio.create', ['categorias' => Categoria::all()]);
+        return view('usuario.perfil.anuncio.create', ['categorias' => Categoria::all()]);
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class AnuncioUsuarioController extends Controller
 
             $nome_imagem = 'foto_anuncio_' . str_replace(' ', '_', $request->nome) . '_' . Str::random(25) . '.' . $extensao;
 
-            $upload = $request->foto_anuncio->storeAs('usuarios/anuncio', $nome_imagem);
+            $upload = $request->foto_anuncio->storeAs('anuncio', $nome_imagem);
 
             if (!$upload) return back()->withErrors([
                 'foto_anuncio', 'Falha ao enviar imagem'
@@ -49,17 +49,17 @@ class AnuncioUsuarioController extends Controller
             'foto_anuncio' => $nome_imagem ?? null,
         ]);
 
-        return redirect()->route('usuario.anuncio.index');
+        return redirect()->route('usuario.perfil.anuncio.index');
     }
 
     public function show(Anuncio $anuncio, $id)
     {
-        return view('usuario.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
+        return view('usuario.perfil.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
     }
 
     public function edit(Anuncio $anuncio, $id)
     {
-        return view('usuario.anuncio.edit', ['anuncio' => Anuncio::where('id', $id)->first(), 'categorias' => Categoria::all()]);
+        return view('usuario.perfil.anuncio.edit', ['anuncio' => Anuncio::where('id', $id)->first(), 'categorias' => Categoria::all()]);
     }
 
     public function update(Request $request, Anuncio $anuncio, $id)
@@ -76,14 +76,14 @@ class AnuncioUsuarioController extends Controller
             'categoria_id' => $request->categoria,
         ]);
 
-        return redirect()->route('usuario.anuncio.show', ['id' => $id]);
+        return redirect()->route('usuario.perfil.anuncio.show', ['id' => $id]);
     }
 
     public function destroy(Anuncio $anuncio, $id)
     {
         $anuncio->where('id', $id)->delete();
 
-        return redirect()->route('usuario.anuncio.index')->withErrors([
+        return redirect()->route('usuario.perfil.anuncio.index')->withErrors([
             'Anúncio deletado com sucesso'
         ]);
     }

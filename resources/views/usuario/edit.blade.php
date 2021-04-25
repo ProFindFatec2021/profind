@@ -1,7 +1,6 @@
 @extends("layouts.backend")
 
 @section('subtitulo', 'Editar perfil')
-
 @section('content')
 <form method="POST" enctype="multipart/form-data">
   @method('PUT')
@@ -21,6 +20,11 @@
   <div class="form-group">
     <label for="email">Email</label>
     <input type="text" class="form-control" placeholder="Email" name="email" id="email" value="{{$usuario->email}}">
+  </div>
+
+  <div class="form-group custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" name="tipo" id="tipo" {{$usuario->tipo == 1 ? 'checked' : ''}}>
+    <label class="custom-control-label" for="tipo">Conta profissional</label>
   </div>
 
   {{-- <div class="form-group">

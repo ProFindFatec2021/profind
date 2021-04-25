@@ -1,12 +1,11 @@
 @extends("layouts.backend")
 
 @section('content')
-<h2 class="text-white text-center">Cadastro @yield('tipo-cadastro')</h2>
-
+<h2 class="text-white text-center">Cadastro</h2>
 <form method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="tipo"
-        value="{{Route::currentRouteName() === 'usuario.create.profissional' ? 1 : 0}}">
+        value="{{Route::currentRouteName() == 'usuario.create.profissional' ? 1 : 0}}">
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome">

@@ -15,4 +15,9 @@ class Anuncio extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
 }
