@@ -85,7 +85,8 @@ class UsuarioController extends Controller
 
     public function destroy(Usuario $usuario)
     {
-        $usuario->where('id', Auth::id())->delete();
+        Anuncio::where('usuario_id', Auth::id())->delete();
+        Usuario::where('id', Auth::id())->delete();
 
         return redirect()->route('login')->withErrors([
             'Conta deletada com sucesso'
