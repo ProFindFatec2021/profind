@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AnuncioController;
-use App\Http\Controllers\AnuncioUsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
@@ -38,13 +37,13 @@ Route::prefix('conta')->middleware('usuario')->group(function () {
 
 
             Route::prefix('anuncios')->name('anuncio.')->middleware('usuario.profissional')->group(function () {
-                Route::get('/', [AnuncioUsuarioController::class, 'index'])->name('index');
-                Route::get('/criar', [AnuncioUsuarioController::class, 'create'])->name('create');
-                Route::post('/criar', [AnuncioUsuarioController::class, 'store'])->name('store');
-                Route::get('/anuncio/{id}', [AnuncioUsuarioController::class, 'show'])->name('show');
-                Route::get('/anuncio/{id}/editar', [AnuncioUsuarioController::class, 'edit'])->name('edit');
-                Route::put('/anuncio/{id}/editar', [AnuncioUsuarioController::class, 'update'])->name('update');
-                Route::delete('/anuncio/{id}/deletar', [AnuncioUsuarioController::class, 'destroy'])->name('destroy');
+                Route::get('/', [AnuncioController::class, 'indexPerfil'])->name('index');
+                Route::get('/criar', [AnuncioController::class, 'create'])->name('create');
+                Route::post('/criar', [AnuncioController::class, 'store'])->name('store');
+                Route::get('/anuncio/{id}', [AnuncioController::class, 'show'])->name('show');
+                Route::get('/anuncio/{id}/editar', [AnuncioController::class, 'edit'])->name('edit');
+                Route::put('/anuncio/{id}/editar', [AnuncioController::class, 'update'])->name('update');
+                Route::delete('/anuncio/{id}/deletar', [AnuncioController::class, 'destroy'])->name('destroy');
             });
         });
     });
