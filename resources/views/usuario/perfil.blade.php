@@ -3,7 +3,9 @@
 @section('subtitulo', 'Perfil')
 
 @section('content')
+@if($usuario->tipo == 1)
 <a href="{{route('usuario.perfil.anuncio.index')}}" class="btn btn-info my-2 w-25 d-block mx-auto">Ver anúncios</a>
+@endif
 <a href="{{route('usuario.perfil.edit')}}" class="btn btn-primary my-2 w-25 d-block mx-auto">Editar perfil</a>
 <form action="{{route('usuario.perfil.destroy')}}" method="post">
   @csrf

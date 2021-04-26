@@ -7,7 +7,6 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Type\Integer;
 
 class AnuncioUsuarioController extends Controller
 {

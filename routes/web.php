@@ -26,16 +26,18 @@ Route::name('store.')->group(function () {
     Route::post('/cadastro-profissional', [UsuarioController::class, 'store'])->name('profissional');
 });
 
-Route::prefix('conta')->middleware('auth')->group(function () {
+Route::prefix('conta')->middleware('usuario')->group(function () {
 
     Route::name('usuario.')->group(function () {
-        Route::get('/', [UsuarioController::class, 'perfil'])->name('perfil');
-        Route::prefix('perfil')->name('perfil.')->middleware('auth')->group(function () {
+        Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('perfil');
+
+        Route::prefix('perfil')->name('perfil.')->group(function () {
             Route::get('/editar', [UsuarioController::class, 'edit'])->name('edit');
             Route::put('/editar', [UsuarioController::class, 'update'])->name('update');
             Route::delete('/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
 
-            Route::prefix('anuncios')->name('anuncio.')->middleware('auth')->group(function () {
+
+            Route::prefix('anuncios')->name('anuncio.')->middleware('usuario.profissional')->group(function () {
                 Route::get('/', [AnuncioUsuarioController::class, 'index'])->name('index');
                 Route::get('/criar', [AnuncioUsuarioController::class, 'create'])->name('create');
                 Route::post('/criar', [AnuncioUsuarioController::class, 'store'])->name('store');
