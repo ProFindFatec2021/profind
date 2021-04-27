@@ -36,7 +36,9 @@
       <td>{{$usuario->telefone}}</td>
       <td>{{$usuario->tipo == 1 ? 'Profissional' : 'Cliente'}}</td>
       <td>
+        @if($usuario->foto_perfil)
         <img src="{{asset('storage/usuarios/perfil/'.$usuario->foto_perfil)}}" height="100" alt="Foto {{$usuario->nome}}" />
+        @else Sem foto @endif
       </td>
       <td>{{$usuario->created_at}}</td>
       <td>{{$usuario->updated_at}}</td>

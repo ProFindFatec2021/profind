@@ -26,7 +26,7 @@ class UsuarioController extends Controller
             'nome' => ['required'],
             'telefone' => ['required', 'unique:usuarios', 'min:14', 'max:15'],
             'email' => ['required', 'unique:usuarios'],
-            'senha' => ['required', 'min:8'],
+            'senha' => ['required', 'min:8', 'max:15'],
         ]);
 
         if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {

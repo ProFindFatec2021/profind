@@ -33,7 +33,9 @@
       </td>
       <td>{{$anuncio->categoria->nome}}</td>
       <td>
+        @if($anuncio->foto_anuncio)
         <img src="{{asset('storage/anuncio/'.$anuncio->foto_anuncio)}}" height="100" alt="Foto {{$anuncio->nome}}" />
+        @else Sem foto @endif
       </td>
       <td>{{$anuncio->created_at}}</td>
       <td>{{$anuncio->updated_at}}</td>
