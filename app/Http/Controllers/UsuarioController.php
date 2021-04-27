@@ -24,9 +24,9 @@ class UsuarioController extends Controller
     {
         $request->validate([
             'nome' => ['required'],
-            'telefone' => ['required', 'unique:usuarios'],
+            'telefone' => ['required', 'unique:usuarios', 'min:14', 'max:15'],
             'email' => ['required', 'unique:usuarios'],
-            'senha' => ['required'],
+            'senha' => ['required', 'min:8'],
         ]);
 
         if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {
@@ -69,7 +69,7 @@ class UsuarioController extends Controller
     {
         $request->validate([
             'nome' => ['required'],
-            'telefone' => ['required', 'unique:usuarios,telefone,' . Auth::id()],
+            'telefone' => ['required', 'unique:usuarios,telefone,' . Auth::id(), 'min:14', 'max:15'],
             'email' => ['required', 'unique:usuarios,email,' . Auth::id()],
         ]);
 
