@@ -5,8 +5,9 @@
 
     RewriteEngine On
 
-    RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://pro-find.herokuapp.com/$1 [R,L]
+    # HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
