@@ -40,6 +40,7 @@ class PedidoController extends Controller
     public function store(Request $request, $id)
     {
         if (Auth::user()->tipo != 0) abort(403);
+
         $anuncio = Anuncio::where('id', $id)->firstOrFail();
         Pedido::create([
             'profissional_id' => $anuncio->usuario->id,
