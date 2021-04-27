@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anuncio;
 use App\Models\Pedido;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
@@ -14,7 +17,8 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $tipo_usuario = Usuario::where('id', Auth::id())->first()->tipo == 1 ? 'profissional_id' : 'cliente_id';
+        return view('usuario.perfil.pedido.index', ['pedidos' => Pedido::where($tipo_usuario, Auth::id())->get()]);
     }
 
     /**
@@ -33,9 +37,16 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        if (Auth::user()->tipo != 0) abort(403);
+        $anuncio = Anuncio::where('id', $id)->firstOrFail();
+        Pedido::create([
+            'profissional_id' => $anuncio->usuario->id,
+            'cliente_id' => Auth::id(),
+            'status' => 'Primeira proposta',
+        ]);
+        return redirect()->back();
     }
 
     /**

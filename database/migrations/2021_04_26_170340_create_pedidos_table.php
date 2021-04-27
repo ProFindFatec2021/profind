@@ -18,7 +18,7 @@ class CreatePedidosTable extends Migration
             $table->foreignId('profissional_id')->constrained('usuarios');
             $table->foreignId('cliente_id')->constrained('usuarios');
             $table->string('status');
-            $table->boolean('aceito');
+            $table->boolean('aceito')->default(false);
             $table->timestamps();
         });
     }

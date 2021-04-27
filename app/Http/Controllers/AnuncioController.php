@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
 use App\Models\Categoria;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,10 @@ class AnuncioController extends Controller
         if (Route::currentRouteName() === 'usuario.perfil.anuncio.show')
             return view('usuario.perfil.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
         else if (Route::currentRouteName() === 'anuncio.show')
-            return view('anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
+            return view('anuncio.show', [
+                'anuncio' => Anuncio::where('id', $id)->first(),
+                'usuario' => Usuario::where('id', Auth::id())->first()
+            ]);
     }
 
     public function indexPerfil()
