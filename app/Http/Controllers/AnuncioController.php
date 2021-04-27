@@ -49,7 +49,7 @@ class AnuncioController extends Controller
         ]);
 
         if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
-            $nome_imagem = Storage::put('anuncio', $request->foto_perfil);
+            // $nome_imagem = Storage::put('anuncio', $request->foto_perfil);
 
         Anuncio::create([
             'nome' => $request->nome,

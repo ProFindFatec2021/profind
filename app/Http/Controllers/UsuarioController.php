@@ -31,7 +31,7 @@ class UsuarioController extends Controller
         ]);
 
         if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid())
-            $nome_imagem = Storage::put('usuarios/perfil', $request->foto_perfil);
+            // $nome_imagem = Storage::put('usuarios/perfil', $request->foto_perfil);
 
         Usuario::create([
             'nome' => $request->nome,
