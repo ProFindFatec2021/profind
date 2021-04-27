@@ -8,6 +8,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class AnuncioController extends Controller
@@ -47,17 +48,8 @@ class AnuncioController extends Controller
             'categoria' => ['required'],
         ]);
 
-        if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid()) {
-            $extensao = $request->foto_anuncio->extension();
-
-            $nome_imagem = 'foto_anuncio_' . str_replace(' ', '_', $request->nome) . '_' . Str::random(25) . '.' . $extensao;
-
-            $upload = $request->foto_anuncio->storeAs('anuncio', $nome_imagem);
-
-            if (!$upload) return back()->withErrors([
-                'foto_anuncio', 'Falha ao enviar imagem'
-            ]);
-        }
+        if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
+            $nome_imagem = Storage::put('anuncio', $request->foto_perfil);
 
         Anuncio::create([
             'nome' => $request->nome,

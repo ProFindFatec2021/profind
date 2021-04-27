@@ -6,6 +6,7 @@ use App\Models\Anuncio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UsuarioController extends Controller
@@ -29,17 +30,8 @@ class UsuarioController extends Controller
             'senha' => ['required', 'min:8', 'max:15'],
         ]);
 
-        if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {
-            $extensao = $request->foto_perfil->extension();
-
-            $nome_imagem = 'foto_perfil_' . str_replace(' ', '_', $request->nome) . '_' . Str::random(25) . '.' . $extensao;
-
-            $upload = $request->foto_perfil->storeAs('usuarios/perfil', $nome_imagem);
-
-            if (!$upload) return back()->withErrors([
-                'foto_perfil', 'Falha ao enviar imagem'
-            ]);
-        }
+        if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid())
+            $nome_imagem = Storage::put('usuarios/perfil', $request->foto_perfil);
 
         Usuario::create([
             'nome' => $request->nome,

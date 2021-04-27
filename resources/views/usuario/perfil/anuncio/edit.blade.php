@@ -32,7 +32,7 @@
 
   {{-- <div class="form-group">
     <label for="foto_anuncio">Foto do anuncio</label>
-    <img src="{{asset('storage/anuncio/'.$anuncio->foto_anuncio)}}" class="d-block" height="100"
+    <img src="{{asset('storage/'.$anuncio->foto_anuncio)}}" class="d-block" height="100"
       alt="Foto {{$anuncio->nome}}" />
     <input type="file" class="form-control-file" name="foto_anuncio" id="foto_anuncio">
   </div> --}}

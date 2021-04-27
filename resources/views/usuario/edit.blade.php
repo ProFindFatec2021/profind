@@ -29,7 +29,7 @@
 
   {{-- <div class="form-group">
     <label for="foto_perfil">Foto de perfil</label>
-    <img src="{{asset('storage/usuarios/perfil/'.$usuario->foto_perfil)}}" class="d-block" height="100"
+    <img src="{{asset('storage/'.$usuario->foto_perfil)}}" class="d-block" height="100"
   alt="Foto {{$usuario->nome}}" />
   <input type="file" class="form-control-file" name="foto_perfil" id="foto_perfil" value="{{$usuario->foto_perfil}}">
   </div> --}}
