@@ -66,3 +66,7 @@ Route::prefix('usuarios')->name('usuario.')->group(function () {
     Route::get('/usuario/{id}', [UsuarioController::class, 'show'])->name('show');
     Route::get('/usuario/{id}/anuncios/', [UsuarioController::class, 'indexAnuncios'])->name('anuncio');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
