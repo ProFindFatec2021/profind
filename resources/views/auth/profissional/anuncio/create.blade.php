@@ -1,19 +1,21 @@
-@extends("layouts.backend")
+@extends('layouts.dashboard')
 
-@section('subtitulo', 'Criar anúncio')
+
+@section('titulo', 'Criar anúncio')
 
 @section('content')
+
 <form method="POST" enctype="multipart/form-data">
   @csrf
 
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome">
+    <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome" value="{{old('nome')}}">
   </div>
 
   <div class="form-group">
     <label for="descricao">Descrição</label>
-    <input type="text" class="form-control" placeholder="Descrição" name="descricao" id="descricao">
+    <input type="text" class="form-control" placeholder="Descrição" name="descricao" id="descricao" value="{{old('descricao')}}">
   </div>
 
   <div class="form-group">
@@ -33,6 +35,4 @@
 
   <button type="submit" class="btn btn-primary">Criar anúncio</button>
 </form>
-
-
 @endsection

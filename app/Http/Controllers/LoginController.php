@@ -12,17 +12,18 @@ class LoginController extends Controller
     public function login()
     {
         if (Auth::check())
-            return redirect()->route('usuario.perfil');
+            return redirect()->route('dashboard.index');
         return view('usuario.login');
     }
 
     public function authenticate(Request $request)
     {
         $usuario = Usuario::select('id')->where('email', $request->email)->where('senha', md5($request->senha))->first();
+
         if ($usuario && Auth::loginUsingId($usuario->id)) {
             $request->session()->regenerate();
 
-            return redirect()->route('usuario.perfil');
+            return redirect()->route('dashboard.index');
         }
 
 

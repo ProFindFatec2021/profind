@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
@@ -26,7 +27,17 @@ Route::name('store.')->group(function () {
     Route::post('/cadastro-profissional', [UsuarioController::class, 'store'])->name('profissional');
 });
 
-Route::prefix('conta')->middleware('usuario')->group(function () {
+Route::prefix('dashboard')->name('dashboard.')->middleware('usuario.profissional')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    Route::prefix('anuncios')->name('anuncio.')->group(function () {
+        Route::get('/', [AnuncioController::class, 'indexPerfil'])->name('index');
+        Route::delete('/', [AnuncioController::class, 'destroy'])->name('destroy');
+        Route::get('/criar', [AnuncioController::class, 'create'])->name('create');
+        Route::post('/criar', [AnuncioController::class, 'store'])->name('store');
+        Route::get('/anuncio/{id}', [AnuncioController::class, 'edit'])->name('edit');
+        Route::put('/anuncio/{id}', [AnuncioController::class, 'update'])->name('update');
+    });
 
     Route::name('usuario.')->group(function () {
         Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('perfil');
@@ -36,15 +47,7 @@ Route::prefix('conta')->middleware('usuario')->group(function () {
             Route::put('/editar', [UsuarioController::class, 'update'])->name('update');
             Route::delete('/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
 
-            Route::prefix('anuncios')->name('anuncio.')->middleware('usuario.profissional')->group(function () {
-                Route::get('/', [AnuncioController::class, 'indexPerfil'])->name('index');
-                Route::get('/criar', [AnuncioController::class, 'create'])->name('create');
-                Route::post('/criar', [AnuncioController::class, 'store'])->name('store');
-                Route::get('/anuncio/{id}', [AnuncioController::class, 'show'])->name('show');
-                Route::get('/anuncio/{id}/editar', [AnuncioController::class, 'edit'])->name('edit');
-                Route::put('/anuncio/{id}/editar', [AnuncioController::class, 'update'])->name('update');
-                Route::delete('/anuncio/{id}/deletar', [AnuncioController::class, 'destroy'])->name('destroy');
-            });
+
 
             Route::prefix('pedidos')->name('pedido.')->group(function () {
                 Route::get('/', [PedidoController::class, 'index'])->name('index');
@@ -66,7 +69,3 @@ Route::prefix('usuarios')->name('usuario.')->group(function () {
     Route::get('/usuario/{id}', [UsuarioController::class, 'show'])->name('show');
     Route::get('/usuario/{id}/anuncios/', [UsuarioController::class, 'indexAnuncios'])->name('anuncio');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,9 +1,8 @@
-@extends("layouts.backend")
+@extends('layouts.dashboard')
 
-@section('subtitulo', 'Editar anúncio')
+@section('titulo', 'Seus anúncios')
 
 @section('content')
-
 <form method="POST" enctype="multipart/form-data">
   @method('put')
   @csrf

@@ -25,7 +25,7 @@
 
       <div class="ml-auto d-flex">
         @auth
-        <a href="{{route('usuario.perfil')}}" class="nav-link">Olá, {{ auth()->user()->nome }}</a>
+        <a href="{{route('dashboard.index')}}" class="nav-link">Olá, {{ auth()->user()->nome }}</a>
         <a href="{{route('logout')}}" class="btn btn-warning">Sair</a>
         @endauth
         @guest

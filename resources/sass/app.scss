@@ -4,8 +4,15 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
 // AdminLTE
-@import '~admin-lte/dist/css/adminlte.css';
+@import '~admin-lte/build/scss/adminlte.scss';
+
+// FontAwesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+
+.sidebar {
+  overflow-x: hidden;
+}
