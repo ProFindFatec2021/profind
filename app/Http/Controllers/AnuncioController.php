@@ -22,7 +22,7 @@ class AnuncioController extends Controller
     public function show($id)
     {
         if (Route::currentRouteName() === 'auth.profissional.anuncio.show')
-            return view('auth.profissional.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
+            return view('dashboard.profissional.anuncio.show', ['anuncio' => Anuncio::where('id', $id)->first()]);
         else if (Route::currentRouteName() === 'anuncio.show')
             return view('anuncio.show', [
                 'anuncio' => Anuncio::where('id', $id)->first(),
@@ -32,12 +32,12 @@ class AnuncioController extends Controller
 
     public function indexPerfil()
     {
-        return view('auth.profissional.anuncio.index', ['anuncios' => Anuncio::where('usuario_id', Auth::id())->get()]);
+        return view('dashboard.profissional.anuncio.index', ['anuncios' => Anuncio::where('usuario_id', Auth::id())->get()]);
     }
 
     public function create()
     {
-        return view('auth.profissional.anuncio.create', ['categorias' => Categoria::all()]);
+        return view('dashboard.profissional.anuncio.create', ['categorias' => Categoria::all()]);
     }
 
     public function store(Request $request)
@@ -59,12 +59,12 @@ class AnuncioController extends Controller
             'foto_anuncio' => $nome_imagem ?? null,
         ]);
 
-        return redirect()->route('dashboard.anuncio.index')->with('success', 'Anúncio criado com sucesso');
+        return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio criado com sucesso');
     }
 
     public function edit($id)
     {
-        return view('auth.profissional.anuncio.edit', ['anuncio' => Anuncio::where('id', $id)->first(), 'categorias' => Categoria::all()]);
+        return view('dashboard.profissional.anuncio.edit', ['anuncio' => Anuncio::where('id', $id)->first(), 'categorias' => Categoria::all()]);
     }
 
     public function update(Request $request, $id)
@@ -81,13 +81,13 @@ class AnuncioController extends Controller
             'categoria_id' => $request->categoria,
         ]);
 
-        return redirect()->route('dashboard.anuncio.index')->with('success', 'Anúncio editado com sucesso');
+        return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio editado com sucesso');
     }
 
     public function destroy(Request $request)
     {
         Anuncio::where('id', $request->id)->delete();
 
-        return redirect()->route('dashboard.anuncio.index')->with('error', 'Anúncio deletado com sucesso');
+        return redirect()->route('dashboard.profissional.anuncio.index')->with('error', 'Anúncio deletado com sucesso');
     }
 }

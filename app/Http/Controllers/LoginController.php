@@ -12,7 +12,7 @@ class LoginController extends Controller
     public function login()
     {
         if (Auth::check())
-            return redirect()->route('dashboard.index');
+            return redirect()->route('dashboard.profissional.index');
         return view('usuario.login');
     }
 
@@ -23,13 +23,11 @@ class LoginController extends Controller
         if ($usuario && Auth::loginUsingId($usuario->id)) {
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard.index');
+            return redirect()->route('dashboard.profissional.index');
         }
 
 
-        return back()->withErrors([
-            'login' => 'Erro ao fazer login!',
-        ]);
+        return back()->with('error', 'Erro ao fazer login!');
     }
 
     public function logout(Request $request)

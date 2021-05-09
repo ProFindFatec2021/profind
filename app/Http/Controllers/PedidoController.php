@@ -10,33 +10,21 @@ use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $tipo_usuario = Usuario::where('id', Auth::id())->first()->tipo == 1 ? 'profissional_id' : 'cliente_id';
-        return view('usuario.perfil.pedido.index', ['pedidos' => Pedido::where($tipo_usuario, Auth::id())->get()]);
+        $pedidosRecusados = Pedido::where('profissional_id', Auth::id())->where('recusado', true)->get();
+        $pedidosAceitos = Pedido::where('profissional_id', Auth::id())->where('aceito', true)->get();
+        $pedidos = Pedido::where('profissional_id', Auth::id())->where('recusado', false)->where('aceito', false)->orderBy('created_at')->get();
+        Pedido::where('visto', false)->update([
+            'visto' => true
+        ]);
+        return view('dashboard.profissional.pedido.index', [
+            'pedidos' => $pedidos,
+            'pedidosRecusados' => $pedidosRecusados,
+            'pedidosAceitos' => $pedidosAceitos
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, $id)
     {
         if (Auth::user()->tipo != 0) abort(403);
@@ -50,48 +38,28 @@ class PedidoController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pedido $pedido)
+    public function aceitar($id)
     {
-        //
-    }
+        Pedido::where('id', $id)->update([
+            'aceito' => true
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pedido $pedido)
-    {
-        //
+        return redirect()->route('dashboard.profissional.pedido.index')->with('success', 'Pedido aceito com sucesso');
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pedido $pedido)
+    public function recusar($id)
     {
-        //
+        Pedido::where('id', $id)->update([
+            'recusado' => true
+        ]);
+
+        return redirect()->route('dashboard.profissional.pedido.index')->with('error', 'Pedido recusado com sucesso');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pedido $pedido)
+    public function status(Request $request)
     {
-        //
+        Pedido::where('id', $request->id)->update([
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('dashboard.profissional.pedido.index')->with('success', 'Status alterado com sucesso');
     }
 }

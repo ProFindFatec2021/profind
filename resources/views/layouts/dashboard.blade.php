@@ -43,21 +43,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.index')}}" class="nav-link @if(Route::current()->getName() == "dashboard.index") active @endif">
+                            <a href="{{route('dashboard.profissional.index')}}" class="nav-link @if(Route::current()->getName() == "dashboard.profissional.index") active @endif">
                                 <i class="fas fa-lg fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.anuncio.index')}}" class="nav-link @if(Request::segment(2) == "anuncios") active @endif">
+                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == "anuncios") active @endif">
                                 <i class="fas fa-lg fa-list-ol"></i>
                                 <p>Anúncios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link @if(Request::segment(2) == "pedidos") active @endif">
+                            <a href="{{route('dashboard.profissional.pedido.index')}}" class="nav-link @if(Request::segment(2) == "pedidos") active @endif">
                                 <i class="fas fa-lg fa-tasks"></i>
                                 <p>Pedidos</p>
+                                <span class="badge badge-success right">{{ App\Models\Pedido::where('visto', false)->count() > 0 ?? null }}</span>
                             </a>
                         </li>
                         <li class="nav-item">

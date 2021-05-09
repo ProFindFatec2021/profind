@@ -27,7 +27,7 @@ Route::name('store.')->group(function () {
     Route::post('/cadastro-profissional', [UsuarioController::class, 'store'])->name('profissional');
 });
 
-Route::prefix('dashboard')->name('dashboard.')->middleware('usuario.profissional')->group(function () {
+Route::prefix('dashboard')->name('dashboard.profissional.')->middleware('usuario.profissional')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     Route::prefix('anuncios')->name('anuncio.')->group(function () {
@@ -39,6 +39,13 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario.profissional
         Route::put('/anuncio/{id}', [AnuncioController::class, 'update'])->name('update');
     });
 
+    Route::prefix('pedidos')->name('pedido.')->group(function () {
+        Route::get('/', [PedidoController::class, 'index'])->name('index');
+        Route::put('/', [PedidoController::class, 'status'])->name('status');
+        Route::get('/aceitar/{id}', [PedidoController::class, 'aceitar'])->name('aceitar');
+        Route::get('/recusar/{id}', [PedidoController::class, 'recusar'])->name('recusar');
+    });
+
     Route::name('usuario.')->group(function () {
         Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('perfil');
 
@@ -46,14 +53,6 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario.profissional
             Route::get('/editar', [UsuarioController::class, 'edit'])->name('edit');
             Route::put('/editar', [UsuarioController::class, 'update'])->name('update');
             Route::delete('/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
-
-
-
-            Route::prefix('pedidos')->name('pedido.')->group(function () {
-                Route::get('/', [PedidoController::class, 'index'])->name('index');
-                Route::get('/anuncio/{id}', [AnuncioController::class, 'show'])->name('show');
-                Route::put('/anuncio/{id}', [AnuncioController::class, 'update'])->name('update');
-            });
         });
     });
 });

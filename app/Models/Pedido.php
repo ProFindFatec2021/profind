@@ -20,4 +20,9 @@ class Pedido extends Model
     {
         return $this->belongsTo(Usuario::class);
     }
+
+    public function anuncio()
+    {
+        return $this->belongsTo(Anuncio::class);
+    }
 }
