@@ -97,4 +97,20 @@ class UsuarioController extends Controller
         $usuario = Usuario::where('id', $id)->first();
         return view('usuario.anuncio.index', ['anuncios' => $anuncios, 'nome' => $usuario->nome]);
     }
+
+    public function fotoPerfil(Request $request)
+    {
+        $usuario = Usuario::select('foto_perfil')->where('id', Auth::id())->first();
+        if ($usuario->foto_perfil)
+            Storage::delete($usuario->foto_perfil);
+
+        if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid())
+            $nome_imagem = Storage::put('usuarios/perfil', $request->foto_perfil);
+        else return back()->with('error', 'Erro ao colocar foto de perfil');
+
+        Usuario::where('id', Auth::id())->update([
+            'foto_perfil' => $nome_imagem ?? null,
+        ]);
+        return back()->with('success', 'Foto de perfil atualizada com sucesso');
+    }
 }
