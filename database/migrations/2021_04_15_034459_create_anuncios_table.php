@@ -17,6 +17,7 @@ class CreateAnunciosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->text('descricao');
+            $table->integer('preco');
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->string('foto_anuncio')->nullable();
