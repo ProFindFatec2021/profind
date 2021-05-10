@@ -50,10 +50,9 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
 
     Route::prefix('perfil')->name('perfil.')->group(function () {
         Route::get('/', [UsuarioController::class, 'perfil'])->name('perfil');
-        Route::put('/', [UsuarioController::class, 'fotoPerfil'])->name('fotoPerfil');
-        Route::get('/editar', [UsuarioController::class, 'edit'])->name('edit');
-        Route::put('/editar', [UsuarioController::class, 'update'])->name('update');
-        Route::delete('/deletar', [UsuarioController::class, 'destroy'])->name('destroy');
+        Route::put('/', [UsuarioController::class, 'update'])->name('update');
+        Route::put('/foto-perfil', [UsuarioController::class, 'fotoPerfil'])->name('fotoPerfil');
+        Route::delete('/', [UsuarioController::class, 'destroy'])->name('destroy');
     });
 });
 
@@ -66,5 +65,4 @@ Route::prefix('anuncios')->name('anuncio.')->group(function () {
 Route::prefix('usuarios')->name('usuario.')->group(function () {
     Route::get('/', [UsuarioController::class, 'index'])->name('index');
     Route::get('/usuario/{id}', [UsuarioController::class, 'show'])->name('show');
-    Route::get('/usuario/{id}/anuncios/', [UsuarioController::class, 'indexAnuncios'])->name('anuncio');
 });

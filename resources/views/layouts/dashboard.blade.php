@@ -36,7 +36,7 @@
                         @endif
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{Auth::user()->nome}}</a>
+                        <a href="{{ route('dashboard.perfil.perfil') }}" class="d-block">{{Auth::user()->nome}}</a>
                     </div>
                 </div>
 
@@ -49,26 +49,32 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.index')}}" class="nav-link @if(Route::current()->getName() == " dashboard.profissional.index") active @endif">
+                            <a href="{{route('dashboard.profissional.index')}}" class="nav-link @if(Route::current()->getName() == "dashboard.profissional.index") active @endif">
                                 <i class="fas fa-lg fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
+                        <li class="nav-item mt-auto">
+                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == "perfil") active @endif">
+                                <i class="fas fa-lg fa-user-edit"></i>
+                                <p>Editar perfil</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == " anuncios") active @endif">
+                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == "anuncios") active @endif">
                                 <i class="fas fa-lg fa-list-ol"></i>
                                 <p>Anúncios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.pedido.index')}}" class="nav-link @if(Request::segment(2) == " pedidos") active @endif">
+                            <a href="{{route('dashboard.profissional.pedido.index')}}" class="nav-link @if(Request::segment(2) == "pedidos") active @endif">
                                 <i class="fas fa-lg fa-tasks"></i>
                                 <p>Pedidos</p>
                                 <span class="badge badge-success right">{{ App\Models\Pedido::where('visto', false)->count() > 0 ?? null }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link @if(Request::segment(2) == " chat") active @endif">
+                            <a href="#" class="nav-link @if(Request::segment(2) == "chat") active @endif">
                                 <i class="fas fa-lg fa-comments"></i>
                                 <p>Chat</p>
                             </a>
@@ -103,13 +109,14 @@
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between">
                         <h1>@yield('titulo')</h1>
-                        @yield('botao-acao')
+                        <div class="d-flex">
+                            @yield('botao-acao')
+                        </div>
                     </div>
                 </div>
             </div>
 
             @yield('content')
-
 
             <div class="modal" tabindex="-1" id="foto-perfil" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -123,7 +130,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input type="file"  name="foto_perfil" aria-describedby="foto-perfil-helper">
+                            <input type="file" name="foto_perfil" aria-describedby="foto-perfil-helper">
                             <small id="foto-perfil-helper" class="form-text text-muted">
                                 Adicionar foto de perfil traz mais confiança para seus clientes
                             </small>

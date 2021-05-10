@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('titulo', 'Seus anúncios')
+@section('titulo', 'Editar anúncio')
 
 @section('content')
 <form method="POST" enctype="multipart/form-data">

@@ -3,7 +3,7 @@
 @section('titulo', 'Seus anúncios')
 
 @section('botao-acao')
-<a href="{{route('dashboard.profissional.anuncio.create')}}" type="button" class="btn btn-success btn-lg mb-2">Criar anúncuio</a>
+<a href="{{route('dashboard.profissional.anuncio.create')}}" type="button" class="btn btn-success btn-lg">Criar anúncuio</a>
 @endsection
 
 @section('content')
