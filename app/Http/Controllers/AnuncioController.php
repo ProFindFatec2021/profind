@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnuncioRequest;
 use App\Models\Anuncio;
 use App\Models\Categoria;
 use App\Models\Usuario;
@@ -9,10 +10,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class AnuncioController extends Controller
 {
+
+    private function editarFotoAnuncio(Request $request, $id)
+    {
+        if ($id) {
+            $anuncio = Anuncio::select('foto_anuncio')->where('id', $id)->first();
+
+            if ($anuncio->foto_anuncio)
+                Storage::delete($anuncio->foto_anuncio);
+        }
+        if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
+            $nome_imagem = Storage::put('anuncio', $request->foto_anuncio);
+        else return false;
+
+        Anuncio::where('id', $id)->update([
+            'foto_anuncio' => $nome_imagem ?? null,
+        ]);
+        return true;
+    }
+
     public function index()
     {
         return view('anuncio.index', ['anuncios' => Anuncio::all()]);
@@ -40,24 +59,25 @@ class AnuncioController extends Controller
         return view('dashboard.profissional.anuncio.create', ['categorias' => Categoria::all()]);
     }
 
-    public function store(Request $request)
+    public function store(AnuncioRequest $request)
     {
-        $request->validate([
-            'nome' => ['required'],
-            'descricao' => ['required'],
-            'categoria' => ['required'],
-        ]);
 
-        // if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
-        // $nome_imagem = Storage::put('anuncio', $request->foto_perfil);
+        $request->validated();
 
-        Anuncio::create([
+        if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
+            $nome_imagem = Storage::put('anuncio', $request->foto_anuncio);
+
+
+        $id = Anuncio::create([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
+            'preco' => $request->preco,
             'usuario_id' => Auth::id(),
             'categoria_id' => $request->categoria,
             'foto_anuncio' => $nome_imagem ?? null,
-        ]);
+        ])->id;
+
+        $this->editarFotoAnuncio($request, $id);
 
         return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio criado com sucesso');
     }
@@ -67,18 +87,17 @@ class AnuncioController extends Controller
         return view('dashboard.profissional.anuncio.edit', ['anuncio' => Anuncio::where('id', $id)->first(), 'categorias' => Categoria::all()]);
     }
 
-    public function update(Request $request, $id)
+    public function update(AnuncioRequest $request, $id)
     {
-        $request->validate([
-            'nome' => ['required'],
-            'descricao' => ['required'],
-            'categoria' => ['required'],
-        ]);
+        $this->editarFotoAnuncio($request, $id);
+
+        $request->validated();
 
         Anuncio::where('id', $id)->update([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
             'categoria_id' => $request->categoria,
+            'preco' => $request->preco,
         ]);
 
         return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio editado com sucesso');

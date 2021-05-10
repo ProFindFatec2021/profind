@@ -14,10 +14,20 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="bg-light card">
         <div class="card-body">
-          <h2>{{$anuncio->nome}}</h2>
-          <p class="text-muted text-sm"><b>Criado em:</b> {{$anuncio->created_at}}</p>
-          <p class="text-muted text-sm"><b>Categoria:</b> {{$anuncio->categoria->nome}}</p>
-          <p class="text-muted text-sm"><b>Descrilçao:</b> {{$anuncio->descricao}}</p>
+          <div class="row">
+            <div class="col-md-7">
+              <h2>{{$anuncio->nome}}</h2>
+              <p class="text-muted text-sm"><b>Criado em:</b> {{$anuncio->created_at}}</p>
+              <p class="text-muted text-sm"><b>Categoria:</b> {{$anuncio->categoria->nome}}</p>
+              <p class="text-muted text-sm"><b>Preço:</b> R${{$anuncio->preco}}</p>
+              <p class="text-muted text-sm"><b>Descriçao:</b> {{$anuncio->descricao}}</p>
+            </div>
+            <div class="col-md-5">
+              @if($anuncio->foto_anuncio)
+              <img src="{{asset('storage/' . $anuncio->foto_anuncio)}}" class="d-block" alt="Foto {{$anuncio->nome}}" style="width: 100%; height: auto; object-fit: cover;" />
+              @endif
+            </div>
+          </div>
         </div>
         <div class="card-footer d-flex justify-content-end">
           <a href="{{route('dashboard.profissional.anuncio.edit', $anuncio->id)}}" class="btn btn-sm btn-primary">

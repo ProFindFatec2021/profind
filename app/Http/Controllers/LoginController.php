@@ -13,7 +13,7 @@ class LoginController extends Controller
     {
         if (Auth::check())
             return redirect()->route('dashboard.profissional.index');
-        return view('usuario.login');
+        return view('dashboard.login');
     }
 
     public function authenticate(Request $request)

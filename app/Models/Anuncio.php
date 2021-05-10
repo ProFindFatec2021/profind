@@ -9,7 +9,7 @@ class Anuncio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'descricao', 'usuario_id', 'categoria_id', 'foto_anuncio'];
+    protected $fillable = ['nome', 'descricao', 'preco', 'usuario_id', 'categoria_id', 'foto_anuncio'];
 
     public function categoria()
     {

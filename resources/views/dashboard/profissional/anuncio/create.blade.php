@@ -19,6 +19,11 @@
   </div>
 
   <div class="form-group">
+    <label for="preco">Preço</label>
+    <input type="number" step=".01" class="form-control" placeholder="Preço" name="preco" id="preco" value="{{old('preco')}}">
+  </div>
+
+  <div class="form-group">
     <label for="categoria">Categoria</label>
     <select name="categoria" id="categoria" class="custom-select">
       <option value="" selected>Selecione uma categoria</option>

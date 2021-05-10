@@ -21,7 +21,7 @@
     <label for="foto_perfil" class="m-0">Foto de perfil
       @if($usuario->foto_perfil)
       <div class="image">
-        <img src="{{asset('storage/'.$usuario->foto_perfil)}}" id="foto-perfil" class="d-block" height="100" alt="Foto {{$usuario->nome}}" />
+        <img src="{{asset('storage/'.$usuario->foto_perfil)}}" id="foto" class="d-block" height="100" alt="Foto {{$usuario->nome}}" />
         <div class="hover">
           <i class="fas fa-pen mr-2"></i>Editar foto
         </div>
@@ -56,20 +56,4 @@
 
   <button type="submit" class="btn btn-primary">Editar perfil</button>
 </form>
-
-<script>
-  function onFileSelected(event) {
-    var selectedFile = event.target.files[0];
-    var reader = new FileReader();
-
-    var imgtag = document.getElementById("foto-perfil");
-    imgtag.title = selectedFile.name;
-
-    reader.onload = function(event) {
-      imgtag.src = event.target.result;
-    };
-
-    reader.readAsDataURL(selectedFile);
-  }
-</script>
 @endsection
