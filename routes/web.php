@@ -6,10 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\SiteController;
 
-Route::get('/', function () {
-    return view('site.index');
-})->name('index');
+Route::get('/', [SiteController::class, 'index'])->name('index');
 
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
