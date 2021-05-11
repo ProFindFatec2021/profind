@@ -54,10 +54,11 @@ class PedidoController extends Controller
 
         return redirect()->route('dashboard.profissional.pedido.index')->with('error', 'Pedido recusado com sucesso');
     }
-    public function status(Request $request)
+    public function update(Request $request)
     {
         Pedido::where('id', $request->id)->update([
-            'status' => $request->status
+            'status' => $request->status,
+            'preco' => $request->preco
         ]);
 
         return redirect()->route('dashboard.profissional.pedido.index')->with('success', 'Status alterado com sucesso');

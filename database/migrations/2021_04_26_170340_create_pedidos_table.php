@@ -19,6 +19,8 @@ class CreatePedidosTable extends Migration
             $table->foreignId('cliente_id')->constrained('usuarios');
             $table->foreignId('anuncio_id')->constrained('anuncios');
             $table->string('status');
+            $table->text('descricao')->nullable();
+            $table->integer('preco');
             $table->boolean('aceito')->default(false);
             $table->boolean('recusado')->default(false);
             $table->boolean('visto')->default(false);

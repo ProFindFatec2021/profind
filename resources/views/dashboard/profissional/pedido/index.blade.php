@@ -12,6 +12,8 @@
           <p><b>Cliente:</b> {{$pedido->cliente->nome}}</p>
           <p><b>Anúncio:</b> {{$pedido->anuncio->nome}}</p>
           <p><b>Status:</b> {{$pedido->status}}</p>
+          <p><b>Preço do pedido:</b> R${{$pedido->preco}}</p>
+          <p><b>Preço no anúncio:</b> R${{$pedido->anuncio->preco}}</p>
           <p><b>Atualizado em:</b> {{$pedido->updated_at}}</p>
           <p><b>Criado em:</b> {{$pedido->created_at}}</p>
         </div>
@@ -54,7 +56,14 @@
           </div>
           <div class="modal-body">
             <input type="hidden" name="id" value="{{$pedido->id}}">
-            <input type="text" class="form-control" name="status" id="status" value="{{$pedido->status}}">
+            <div class="form-group">
+              <label for="status">Status do pedido</label>
+              <input type="text" class="form-control" name="status" id="status" value="{{$pedido->status}}">
+            </div>
+            <div class="form-group">
+              <label for="preco">Preço do pedido</label>
+              <input type="text" class="form-control" name="preco" id="preco" value="{{$pedido->preco}}">
+            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Editar</button>
@@ -80,6 +89,8 @@
             <p><b>Cliente:</b> {{$pedido->cliente->nome}}</p>
             <p><b>Anúncio:</b> {{$pedido->anuncio->nome}}</p>
             <p><b>Status:</b> {{$pedido->status}}</p>
+            <p><b>Preço do pedido:</b> R${{$pedido->preco}}</p>
+            <p><b>Preço no anúncio:</b> R${{$pedido->anuncio->preco}}</p>
             <p><b>Atualizado em:</b> {{$pedido->updated_at}}</p>
             <p><b>Criado em:</b> {{$pedido->created_at}}</p>
           </div>
@@ -108,6 +119,8 @@
               <p><b>Cliente:</b> {{$pedido->cliente->nome}}</p>
               <p><b>Anúncio:</b> {{$pedido->anuncio->nome}}</p>
               <p><b>Status:</b> {{$pedido->status}}</p>
+              <p><b>Preço do pedido:</b> R${{$pedido->preco}}</p>
+              <p><b>Preço no anúncio:</b> R${{$pedido->anuncio->preco}}</p>
               <p><b>Atualizado em:</b> {{$pedido->updated_at}}</p>
               <p><b>Criado em:</b> {{$pedido->created_at}}</p>
             </div>
@@ -123,9 +136,4 @@
       </div>
       </div>
       @endif
-      <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-          $(".editar-status")
-        });
-      </script>
       @endsection

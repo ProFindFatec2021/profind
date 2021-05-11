@@ -95,8 +95,8 @@ class UsuarioController extends Controller
     public function fotoPerfil(Request $request)
     {
         if ($this->editarFotoPerfil($request))
-            back()->with('success', 'Foto de perfil atualizada com sucesso');
-        else back()->with('error', 'Erro ao colocar foto de perfil');
+            return back()->with('success', 'Foto de perfil atualizada com sucesso');
+        else return back()->with('error', 'Erro ao colocar foto de perfil');
     }
 
     public function destroy(Usuario $usuario)

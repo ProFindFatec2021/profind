@@ -48,7 +48,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
                     <div class="image">
                         @if(Auth::user()->foto_perfil)
-                        <img src="{{asset('storage/'.Auth::user()->foto_perfil)}}" class="img-circle elevation-2" alt="Foto {{Auth::user()->nome}}" style="height: 3rem;width: 3rem;object-fit: cover;" />
+                        <img src="{{asset('storage/'.Auth::user()->foto_perfil)}}" class="img-circle elevation-2" alt="Foto {{Auth::user()->nome}}" style="height: calc(4.6rem /2);width: calc(4.6rem /2);object-fit: cover;" />
                         @else
                         <button class="text-dark bg-light px-1 py-2 rounded-circle d-flex align-items-center justify-content-center border-0" title="Adicionar foto de perfil" data-toggle="modal" data-target="#foto-perfil">
                             <i class="fas fa-user-plus fa-lg"></i>

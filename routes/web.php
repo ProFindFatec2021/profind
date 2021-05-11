@@ -42,7 +42,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
 
         Route::prefix('pedidos')->name('pedido.')->group(function () {
             Route::get('/', [PedidoController::class, 'index'])->name('index');
-            Route::put('/', [PedidoController::class, 'status'])->name('status');
+            Route::put('/', [PedidoController::class, 'update'])->name('update');
             Route::get('/aceitar/{id}', [PedidoController::class, 'aceitar'])->name('aceitar');
             Route::get('/recusar/{id}', [PedidoController::class, 'recusar'])->name('recusar');
         });
