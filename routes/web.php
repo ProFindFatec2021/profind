@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PedidoController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('site.index');
 })->name('index');
 
 
