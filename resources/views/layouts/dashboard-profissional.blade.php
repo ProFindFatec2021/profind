@@ -81,7 +81,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.pedido.index')}}" class="nav-link @if(Request::segment(2) == " pedidos") active @endif">
+                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == " pedidos") active @endif">
                                 <i class="fas fa-lg fa-tasks"></i>
                                 <p>Pedidos</p>
                                 <span class="badge badge-success right">{{ App\Models\Pedido::where('visto', false)->count() > 0 ?? null }}</span>

@@ -28,8 +28,8 @@ Route::name('store.')->group(function () {
 });
 
 Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(function () {
-    Route::name('profissional.')->middleware('usuario.profissional')->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::name('profissional.')->prefix('profissional')->middleware('usuario.profissional')->group(function () {
+        Route::get('/', [DashboardController::class, 'profissional'])->name('index');
 
         Route::prefix('anuncios')->name('anuncio.')->group(function () {
             Route::get('/', [AnuncioController::class, 'indexPerfil'])->name('index');
@@ -39,13 +39,17 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
             Route::get('/anuncio/{id}', [AnuncioController::class, 'edit'])->name('edit');
             Route::put('/anuncio/{id}', [AnuncioController::class, 'update'])->name('update');
         });
+    });
 
-        Route::prefix('pedidos')->name('pedido.')->group(function () {
-            Route::get('/', [PedidoController::class, 'index'])->name('index');
-            Route::put('/', [PedidoController::class, 'update'])->name('update');
-            Route::get('/aceitar/{id}', [PedidoController::class, 'aceitar'])->name('aceitar');
-            Route::get('/recusar/{id}', [PedidoController::class, 'recusar'])->name('recusar');
-        });
+    Route::name('cliente.')->prefix('cliente')->middleware('usuario.cliente')->group(function () {
+        Route::get('/', [DashboardController::class, 'cliente'])->name('index');
+    });
+
+    Route::prefix('pedidos')->name('pedido.')->group(function () {
+        Route::get('/', [PedidoController::class, 'index'])->name('index');
+        Route::put('/', [PedidoController::class, 'update'])->name('update');
+        Route::get('/aceitar/{id}', [PedidoController::class, 'aceitar'])->name('aceitar');
+        Route::get('/recusar/{id}', [PedidoController::class, 'recusar'])->name('recusar');
     });
 
     Route::prefix('perfil')->name('perfil.')->group(function () {

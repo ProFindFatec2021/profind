@@ -1,4 +1,4 @@
-@extends("layouts.dashboard")
+@extends(Auth::user()->tipo == 1 ? "layouts.dashboard-profissional" : "layouts.dashboard-cliente")
 
 @section('content')
 <h2>Pedidos Pendentes</h2>
@@ -9,7 +9,11 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="bg-light card">
         <div class="card-body">
+          @if(Auth::user()->tipo == 1)
           <p><b>Cliente:</b> {{$pedido->cliente->nome}}</p>
+          @else
+          <p><b>Profissional:</b> {{$pedido->profissional->nome}}</p>
+          @endif
           <p><b>Anúncio:</b> {{$pedido->anuncio->nome}}</p>
           <p><b>Status:</b> {{$pedido->status}}</p>
           <p><b>Preço do pedido:</b> R${{$pedido->preco}}</p>
@@ -23,11 +27,11 @@
             <i class="fas fa-edit fa-lg mr-1"></i>
             <b>Editar Status</b>
           </button>
-          <a href="{{route('dashboard.profissional.pedido.recusar', ['id' => $pedido->id])}}" class="btn btn-sm btn-danger d-flex align-items-center mr-2">
+          <a href="{{route('dashboard.pedido.recusar', ['id' => $pedido->id])}}" class="btn btn-sm btn-danger d-flex align-items-center mr-2">
             <i class="fas fa-times-circle fa-lg mr-1"></i>
             <b>Recusar</b>
           </a>
-          <a href="{{route('dashboard.profissional.pedido.aceitar', ['id' => $pedido->id])}}" class="btn btn-sm btn-success d-flex align-items-center">
+          <a href="{{route('dashboard.pedido.aceitar', ['id' => $pedido->id])}}" class="btn btn-sm btn-success d-flex align-items-center">
             <i class="fas fa-check-circle fa-lg mr-1"></i>
             <b>Aceitar</b>
           </a>
@@ -86,7 +90,11 @@
       <div class="col-12 col-sm-6 col-md-4">
         <div class="bg-light card">
           <div class="card-body">
+            @if(Auth::user()->tipo == 1)
             <p><b>Cliente:</b> {{$pedido->cliente->nome}}</p>
+            @else
+            <p><b>Profissional:</b> {{$pedido->profissional->nome}}</p>
+            @endif
             <p><b>Anúncio:</b> {{$pedido->anuncio->nome}}</p>
             <p><b>Status:</b> {{$pedido->status}}</p>
             <p><b>Preço do pedido:</b> R${{$pedido->preco}}</p>
@@ -116,7 +124,11 @@
         <div class="col-12 col-sm-6 col-md-4">
           <div class="bg-light card">
             <div class="card-body">
+              @if(Auth::user()->tipo == 1)
               <p><b>Cliente:</b> {{$pedido->cliente->nome}}</p>
+              @else
+              <p><b>Profissional:</b> {{$pedido->profissional->nome}}</p>
+              @endif
               <p><b>Anúncio:</b> {{$pedido->anuncio->nome}}</p>
               <p><b>Status:</b> {{$pedido->status}}</p>
               <p><b>Preço do pedido:</b> R${{$pedido->preco}}</p>

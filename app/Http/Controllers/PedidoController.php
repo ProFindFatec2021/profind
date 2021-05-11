@@ -12,13 +12,14 @@ class PedidoController extends Controller
 {
     public function index()
     {
-        $pedidosRecusados = Pedido::where('profissional_id', Auth::id())->where('recusado', true)->get();
-        $pedidosAceitos = Pedido::where('profissional_id', Auth::id())->where('aceito', true)->get();
-        $pedidos = Pedido::where('profissional_id', Auth::id())->where('recusado', false)->where('aceito', false)->orderBy('created_at')->get();
+        $coluna = Auth::user()->tipo == 1 ? 'profissional_id' : 'cliente_id';
+        $pedidosRecusados = Pedido::where($coluna, Auth::id())->where('recusado', true)->get();
+        $pedidosAceitos = Pedido::where($coluna, Auth::id())->where('aceito', true)->get();
+        $pedidos = Pedido::where($coluna, Auth::id())->where('recusado', false)->where('aceito', false)->orderBy('created_at')->get();
         Pedido::where('visto', false)->update([
             'visto' => true
         ]);
-        return view('dashboard.profissional.pedido.index', [
+        return view('dashboard.pedido.index', [
             'pedidos' => $pedidos,
             'pedidosRecusados' => $pedidosRecusados,
             'pedidosAceitos' => $pedidosAceitos
@@ -44,7 +45,7 @@ class PedidoController extends Controller
             'aceito' => true
         ]);
 
-        return redirect()->route('dashboard.profissional.pedido.index')->with('success', 'Pedido aceito com sucesso');
+        return redirect()->route('dashboard.pedido.index')->with('success', 'Pedido aceito com sucesso');
     }
     public function recusar($id)
     {
@@ -52,7 +53,7 @@ class PedidoController extends Controller
             'recusado' => true
         ]);
 
-        return redirect()->route('dashboard.profissional.pedido.index')->with('error', 'Pedido recusado com sucesso');
+        return redirect()->route('dashboard.pedido.index')->with('error', 'Pedido recusado com sucesso');
     }
     public function update(Request $request)
     {
@@ -61,6 +62,6 @@ class PedidoController extends Controller
             'preco' => $request->preco
         ]);
 
-        return redirect()->route('dashboard.profissional.pedido.index')->with('success', 'Status alterado com sucesso');
+        return redirect()->route('dashboard.pedido.index')->with('success', 'Status alterado com sucesso');
     }
 }

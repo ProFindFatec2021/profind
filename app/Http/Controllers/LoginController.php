@@ -23,7 +23,10 @@ class LoginController extends Controller
         if ($usuario && Auth::loginUsingId($usuario->id)) {
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard.profissional.index');
+            if ($usuario->tipo)
+                return redirect()->route('dashboard.profissional.index');
+            else
+                return redirect()->route('dashboard.cliente.index');
         }
 
 

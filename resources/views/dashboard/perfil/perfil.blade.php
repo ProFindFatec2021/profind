@@ -1,7 +1,6 @@
-@extends("layouts.dashboard")
+@extends(Auth::user()->tipo == 1 ? "layouts.dashboard-profissional" : "layouts.dashboard-cliente")
 
 @section('titulo', 'Editar perfil')
-
 
 @section('botao-acao')
 <form method="post">

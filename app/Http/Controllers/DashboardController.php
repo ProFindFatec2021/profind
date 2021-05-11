@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function profissional()
     {
         $totalPedidosPendentes = Pedido::where([
             ['aceito', false],
@@ -25,5 +25,11 @@ class DashboardController extends Controller
                 'totalPedidos' => $totalPedidosPendentes + $totalPedidosAceitos + $totalPedidosRecusados
             ]
         );
+    }
+    public function cliente()
+    {
+
+        return view(
+            'dashboard.cliente.dashboard');
     }
 }
