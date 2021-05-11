@@ -35,7 +35,7 @@
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-bold" data-widget="control-sidebar" data-slide="true" href="{{route('logout')}}" role="button">
+                    <a class="nav-link text-bold" href="{{route('logout')}}">
                         Logout
                         <i class="fas fa-sign-out-alt fa-lg ml-1"></i>
                     </a>
