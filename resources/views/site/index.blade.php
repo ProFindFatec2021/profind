@@ -16,7 +16,7 @@
 <header>
     <div class="menu">
         <ul>
-            <li><a href="#" class="logo">PROFIND</a></li>
+            <li><a href="{{route('index')}}" class="logo">PROFIND</a></li>
             <li><a href="{{route('login')}}" class="signin">login</a></li>
             <li><a href="{{route('usuario.create.cliente')}}" class="signup">find</a></li>
             <li><a href="{{route('usuario.create.profissional')}}" class="signup">pro</a></li>

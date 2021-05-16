@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-cliente')
+@extends('dashboard.layouts.dashboard-cliente')
 
 @section('titulo', 'Dashboard')
 

@@ -11,19 +11,22 @@ class LoginController extends Controller
 
     public function login()
     {
-        if (Auth::check())
-            return redirect()->route('dashboard.profissional.index');
+        if (Auth::check()) {
+            if (Auth::user()->tipo == 1)
+                return redirect()->route('dashboard.profissional.index');
+            return redirect()->route('dashboard.cliente.index');
+        }
         return view('dashboard.login');
     }
 
     public function authenticate(Request $request)
     {
-        $usuario = Usuario::select('id')->where('email', $request->email)->where('senha', md5($request->senha))->first();
+        $usuario = Usuario::select('id', 'tipo')->where('email', $request->email)->where('senha', md5($request->senha))->first();
 
         if ($usuario && Auth::loginUsingId($usuario->id)) {
             $request->session()->regenerate();
 
-            if ($usuario->tipo)
+            if ($usuario->tipo == 1)
                 return redirect()->route('dashboard.profissional.index');
             else
                 return redirect()->route('dashboard.cliente.index');

@@ -1,0 +1,46 @@
+.loginScreen {
+  display: flex;
+  margin-top: 5%;
+}
+label {
+  font-size: 1.5rem;
+}
+.form {
+  width: 40%;
+  margin: 10%;
+  display: box;
+  position: absolute;
+  color: #412b04;
+}
+.form input[type="email"],
+input[type="password"] {
+  margin: 10px;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid black;
+  color: #412b04;
+}
+.form .btn {
+  text-align: center;
+  padding: 2%;
+  margin-top: 2%;
+  font-size: 1rem;
+  width: 20%;
+  border: none;
+  background-color: #f8a000;
+  color: #412b04;
+  border-radius: 12px;
+  box-shadow: 3px 3px 6px #412b04;
+}
+.form .btn:hover {
+  width: 26%;
+  font-size: 1.2rem;
+  transition: 0.5s;
+}
+.bg-log {
+  width: 60%;
+  height: 80vh;
+  margin-left: 40%;
+}
