@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
@@ -56,6 +57,12 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
         Route::put('/', [UsuarioController::class, 'update'])->name('update');
         Route::put('/foto-perfil', [UsuarioController::class, 'fotoPerfil'])->name('fotoPerfil');
         Route::delete('/', [UsuarioController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('chat')->name('chat.')->group(function(){
+        Route::get('/', [ChatController::class, 'index'])->name('index');
+        Route::get('/{id}', [ChatController::class, 'show'])->name('show');
+        Route::post('/{id}', [ChatController::class, 'store'])->name('store');
     });
 });
 

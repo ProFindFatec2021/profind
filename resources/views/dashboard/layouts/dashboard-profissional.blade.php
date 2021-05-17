@@ -63,32 +63,32 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.index')}}" class="nav-link @if(Route::current()->getName() == " dashboard.profissional.index") active @endif">
+                            <a href="{{route('dashboard.profissional.index')}}" class="nav-link @if(Route::current()->getName() == "dashboard.profissional.index") active @endif">
                                 <i class="fas fa-lg fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item mt-auto">
-                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == " perfil") active @endif">
+                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == "perfil") active @endif">
                                 <i class="fas fa-lg fa-user-edit"></i>
                                 <p>Editar perfil</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == " anuncios") active @endif">
+                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == "anuncios") active @endif">
                                 <i class="fas fa-lg fa-list-ol"></i>
                                 <p>Anúncios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == " pedidos") active @endif">
+                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == "pedidos") active @endif">
                                 <i class="fas fa-lg fa-tasks"></i>
                                 <p>Pedidos</p>
                                 <span class="badge badge-success right">{{ App\Models\Pedido::where('visto', false)->count() > 0 ?? null }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link @if(Request::segment(2) == " chat") active @endif">
+                            <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == "chat") active @endif">
                                 <i class="fas fa-lg fa-comments"></i>
                                 <p>Chat</p>
                             </a>
