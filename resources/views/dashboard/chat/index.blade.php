@@ -5,7 +5,7 @@
 @section('content')
 
 @foreach ($chats as $chat)
-<a href="{{route('dashboard.chat.show', $chat->destinatario->id)}}">{{$chat->destinatario->nome}} - {{$chat->remetente->nome}} - {{$chat->mensagem}}</a>
+<a href="{{route('dashboard.chat.show', $chat->destinatario->id)}}">{{$chat->destinatario->nome}} - {{$chat->remetente->nome}}</a>
 <br>
 @endforeach
 @endsection

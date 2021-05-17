@@ -91,6 +91,7 @@
                             <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == "chat") active @endif">
                                 <i class="fas fa-lg fa-comments"></i>
                                 <p>Chat</p>
+                                <span class="badge badge-success right">{{ App\Models\Chat::where([['visto', false], ['destinatario_id', Auth::id()]])->count() > 0 ?? null }}</span>
                             </a>
                         </li>
                     </ul>

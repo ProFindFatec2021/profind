@@ -10,16 +10,21 @@ class ChatController extends Controller
 {
     public function index()
     {
-        $chats = Chat::where('remetente_id', Auth::id())->get();
+        $chats = Chat::where('remetente_id', Auth::id())->groupBy('destinatario_id')->get();
 
         return view('dashboard.chat.index', ['chats' => $chats]);
     }
 
     public function show($id)
     {
-        $mensagensEnviadas = Chat::where([['remetente_id', Auth::id()], ['destinatario_id', $id]])->orderBy('created_at', 'asc')->get();
-        $mensagensRecebidas = Chat::orWhere([['remetente_id', $id], ['destinatario_id', Auth::id()]])->orderBy('created_at', 'asc')->get();
-        $mensagens = $mensagensRecebidas->merge($mensagensEnviadas);
+        Chat::where([['destinatario_id', Auth::id()], ['remetente_id', $id]])->update([
+            'visto' => true
+        ]);
+
+        $mensagensEnviadas = Chat::where([['remetente_id', Auth::id()], ['destinatario_id', $id]])->get();
+        $mensagensRecebidas = Chat::orWhere([['remetente_id', $id], ['destinatario_id', Auth::id()]])->get();
+        $mensagens = $mensagensRecebidas->merge($mensagensEnviadas)->sortby('created_at');
+
         return view('dashboard.chat.show', ['mensagens' => $mensagens]);
     }
 
