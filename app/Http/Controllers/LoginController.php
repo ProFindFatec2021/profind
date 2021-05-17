@@ -13,8 +13,9 @@ class LoginController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->tipo == 1)
-                return redirect()->route('dashboard.profissional.index');
-            return redirect()->route('dashboard.cliente.index');
+                return redirect()->route('dashboard.index
+');
+            return redirect()->route('dashboard.index');
         }
         return view('dashboard.login');
     }
@@ -27,9 +28,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if ($usuario->tipo == 1)
-                return redirect()->route('dashboard.profissional.index');
+                return redirect()->route('dashboard.index');
             else
-                return redirect()->route('dashboard.cliente.index');
+                return redirect()->route('dashboard.index');
         }
 
 

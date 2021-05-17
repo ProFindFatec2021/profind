@@ -1,4 +1,4 @@
-@extends(Auth::user()->tipo == 1 ? "dashboard.layouts.dashboard-profissional" : "dashboard.layouts.dashboard-cliente")
+@extends('dashboard.layouts.dashboard')
 
 @section('content')
 <h2>Pedidos Pendentes</h2>

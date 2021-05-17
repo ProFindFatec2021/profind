@@ -1,21 +1,16 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
 // Custom
 @import 'custom';
 
-// Variables
-@import 'variables';
-
-// AdminLTE
-@import '~admin-lte/build/scss/adminlte.scss';
-
-// FontAwesome
-@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "~@fortawesome/fontawesome-free/scss/solid.scss";
-@import "~@fortawesome/fontawesome-free/scss/brands.scss";
-@import "~@fortawesome/fontawesome-free/scss/regular.scss";
-
 .sidebar {
   overflow-x: hidden;
+}
+
+div#app {
+  max-height: 100vh;
+  overflow-y: scroll;
 }

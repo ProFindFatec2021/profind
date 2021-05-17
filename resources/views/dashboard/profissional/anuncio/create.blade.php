@@ -1,4 +1,5 @@
-@extends('dashboard.layouts.dashboard-profissional')
+@extends('dashboard.layouts.dashboard')
+
 
 
 @section('titulo', 'Criar anúncio')

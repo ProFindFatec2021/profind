@@ -2,12 +2,11 @@ const gulp = require("gulp"),
     sass = require("gulp-sass"),
     concat = require("gulp-concat"),
     minify = require("gulp-minify"),
-    browserify = require("gulp-browserify");
-imagemin = require("gulp-imagemin");
+    imagemin = require("gulp-imagemin");
 
 const paths = {
     dev: {
-        scss: "resources/scss/**/*.scss",
+        scss: "resources/sass/**/*.scss",
         js: "resources/js/**/*.js",
         img: "resources/img/**",
     },
@@ -28,7 +27,6 @@ function compScss() {
 function compJs() {
     return gulp
         .src(paths.dev.js)
-        .pipe(browserify())
         .pipe(concat("main.js"))
         .pipe(minify())
         .pipe(gulp.dest(paths.dist.js));

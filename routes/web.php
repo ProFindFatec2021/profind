@@ -27,9 +27,9 @@ Route::name('store.')->group(function () {
 });
 
 Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(function () {
-    Route::name('profissional.')->prefix('profissional')->middleware('usuario.profissional')->group(function () {
-        Route::get('/', [DashboardController::class, 'profissional'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 
+    Route::name('profissional.')->prefix('profissional')->middleware('usuario.profissional')->group(function () {
         Route::prefix('anuncios')->name('anuncio.')->group(function () {
             Route::get('/', [AnuncioController::class, 'indexPerfil'])->name('index');
             Route::delete('/', [AnuncioController::class, 'destroy'])->name('destroy');
@@ -38,10 +38,6 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
             Route::get('/anuncio/{id}', [AnuncioController::class, 'edit'])->name('edit');
             Route::put('/anuncio/{id}', [AnuncioController::class, 'update'])->name('update');
         });
-    });
-
-    Route::name('cliente.')->prefix('cliente')->middleware('usuario.cliente')->group(function () {
-        Route::get('/', [DashboardController::class, 'cliente'])->name('index');
     });
 
     Route::prefix('pedidos')->name('pedido.')->group(function () {
@@ -58,7 +54,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
         Route::delete('/', [UsuarioController::class, 'destroy'])->name('destroy');
     });
 
-    Route::prefix('chat')->name('chat.')->group(function(){
+    Route::prefix('chat')->name('chat.')->group(function () {
         Route::get('/', [ChatController::class, 'index'])->name('index');
         Route::get('/{id}', [ChatController::class, 'show'])->name('show');
         Route::post('/{id}', [ChatController::class, 'store'])->name('store');
