@@ -11,7 +11,6 @@ use App\Http\Controllers\SiteController;
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
 
-
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
