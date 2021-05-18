@@ -1,95 +1,62 @@
-@extends("layouts.backend")
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<h2 class="text-white text-center">Cadastro {{Route::currentRouteName() == 'usuario.create.profissional' ? 'Profissional' : 'Cliente'}}</h2>
-<form method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="tipo" value="{{Route::currentRouteName() == 'usuario.create.profissional' ? 1 : 0}}">
-    <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>testLayoutProfind</title>
+</head>
+<header>
+    <div class="menu">
+        <ul>
+            <li><a href="{{route('index')}}" class="logo">PROFIND</a></li>
+            <li><a href="{{route('login')}}" class="signin">login</a></li>
+            <li><a href="{{route('usuario.create.cliente')}}" class="signup">find</a></li>
+            <li><a href="{{route('usuario.create.profissional')}}" class="signup">pro</a></li>
+        </ul>
     </div>
+</header>
 
-    <div class="form-group">
-        <label for="telefone">Telefone</label>
-        <input type="text" class="form-control" placeholder="Telefone" name="telefone" id="telefone">
-    </div>
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" placeholder="Email" name="email" id="email">
-    </div>
-
-    <div class="form-group">
-        <label for="senha">Senha</label>
-        <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha">
-    </div>
-
-    <div class="form-group">
-        <label for="foto_perfil">Foto de perfil</label>
-        <input type="file" class="form-control-file" name="foto_perfil" id="foto_perfil">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
-@endsection
+<body>
 
 
-@section('script')
-<script>
-    var SPMaskBehavior = function(val) {
-            return val.replace(/\D/g, "").length === 11 ? "(00) 00000-0000" : "(00) 0000-00009";
-        },
-        spOptions = {
-            onKeyPress: function(val, e, field, options) {
-                field.mask(SPMaskBehavior.apply({}, arguments), options);
-            },
-        };
+    <section class="loginScreen">
+        <form method="POST" action="{{route('usuario.create.store')}}" class="form" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="tipo" value="{{Route::currentRouteName() == 'usuario.create.profissional' ? 1 : 0}}">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" placeholder="Nome" name="nome" id="nome">
+            </div>
 
-    $("#telefone").mask(SPMaskBehavior, spOptions);
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" placeholder="Telefone" name="telefone" id="telefone">
+            </div>
 
-    function validaEmail(email) {
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email" name="email" id="email">
+            </div>
 
-    // $("form").submit(function(e) {
-    //     e.preventDefault();
-    //     let nome = document.querySelector("#nome");
-    //     let telefone = document.querySelector("#telefone");
-    //     let email = document.querySelector("#email");
-    //     let senha = document.querySelector("#senha");
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" placeholder="Senha" name="senha" id="senha">
+            </div>
 
-    //     if (nome.length == 0) {
-    //         console.log("Nome vazil");
-    //         return false;
-    //     } else if (/\d/.test(nome) || /[^a-z\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]/i.test(nome) || nome.length < 2) {
-    //         return false;
-    //     }
-    //     if (telefone.length == 0) {
-    //         console.log("Telefone vazil");
-    //         return false;
-    //     } else if (telefone.length !== 14 && telefone.length !== 15) {
-    //         return false;
-    //     }
-    //     if (email.length == 0) {
-    //         console.log("Email vazil");
-    //         return false;
-    //     } else if (!validaEmail(email)) {
-    //         return false;
-    //     }
-    //     if (senha.length == 0) {
-    //         console.log("Senha vazil");
-    //         return false;
-    //     } else if (senha.value.match(/[A-Z]/g)) {
-    //         console.log("Letra maiuscula");
-    //     } else if (senha.value.match(/[0-9]/g)) {
-    //         console.log("Numeros senha");
-    //     } else if (senha.value.length >= 8) {
-    //         console.log("Pelo menos 8");
-    //     }
+            <div class="form-group">
+                <label for="foto_perfil">Foto de perfil</label>
+                <input type="file" class="form-control-file" name="foto_perfil" id="foto_perfil">
+            </div>
 
-    //     console.log('a');
-    // });
-</script>
-@endsection
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <img src="images/teste_bg_login02.png" class="bg-log">
+    </section>
+</body>
+
+</html>

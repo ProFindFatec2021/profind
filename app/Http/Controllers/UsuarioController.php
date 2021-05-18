@@ -57,7 +57,6 @@ class UsuarioController extends Controller
             'tipo' => $request->tipo,
             'foto_perfil' => $nome_imagem ?? null,
         ]);
-
         return redirect()->route('login');
     }
 
