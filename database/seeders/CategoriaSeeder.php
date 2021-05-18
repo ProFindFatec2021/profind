@@ -16,27 +16,32 @@ class CategoriaSeeder extends Seeder
     {
         DB::table('categorias')->insert([
             'id' => 1,
-            'nome' => 'Pintor'
+            'nome' => 'Pintor',
+            'icone' => 'fas fa-paint-roller',
         ]);
 
         DB::table('categorias')->insert([
             'id' => 2,
-            'nome' => 'Eletricista'
+            'nome' => 'Eletricista',
+            'icone' => 'fas fa-bolt',
         ]);
 
         DB::table('categorias')->insert([
             'id' => 3,
-            'nome' => 'Mecânico'
+            'nome' => 'Mecânico',
+            'icone' => 'fas fa-wrench',
         ]);
 
         DB::table('categorias')->insert([
             'id' => 4,
-            'nome' => 'Tecnologia'
+            'nome' => 'Tecnologia',
+            'icone' => 'fas fa-laptop',
         ]);
 
         DB::table('categorias')->insert([
             'id' => 5,
-            'nome' => 'Aulas'
+            'nome' => 'Aulas',
+            'icone' => 'fas fa-chalkboard-teacher',
         ]);
     }
 }

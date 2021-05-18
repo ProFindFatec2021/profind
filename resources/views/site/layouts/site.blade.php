@@ -37,6 +37,56 @@
     <main>
         @yield('content')
     </main>
+
+
+    <footer>
+        <div class="foot">
+            <div class="fleft">
+                <p>
+                <h1>Who are us?</h1>
+                Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and
+                scrambled it to make a type specimen book
+                </p>
+            </div>
+            <div class="fright">
+                <p>
+                <h1>Work with us</h1>
+                - Get up to 20 monthly contracts<br>
+                - Become a requested pro<br>
+                - Receive our seals of approval
+                </p>
+                <div class="medias">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fab fa-facebook" aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fab fa-instagram" aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fab fa-youtube" aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fab fa-twitter" aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{asset('js/site-min.js')}}"></script>
