@@ -61,7 +61,7 @@
             </div>
 
             <div class="card-footer d-flex justify-content-end">
-                <a href="{{route('dashboard.profissional.anuncio.index')}}" class="text-info">
+                <a href="{{route('dashboard.pedido.index')}}" class="text-info">
                     Ver todos os pedidos
                     <i class="fas fa-external-link-alt"></i>
                 </a>
