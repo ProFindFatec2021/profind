@@ -37,22 +37,6 @@
     </form>
     <img src="images/teste_bg_login02.png" class="bg-log">
   </section>
-
-
-
-  <form method="POST">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" class="form-control" placeholder="Email" name="email" id="email">
-    </div>
-
-    <div class="form-group">
-      <label for="senha">Senha</label>
-      <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
 </body>
 
 </html>
