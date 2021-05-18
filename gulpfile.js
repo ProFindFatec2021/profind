@@ -8,12 +8,12 @@ const paths = {
     dev: {
         scss: "resources/sass/**/*.scss",
         js: "resources/js/**/*.js",
-        img: "resources/img/**",
+        img: "resources/images/**",
     },
     dist: {
         css: "public/css/",
         js: "public/js",
-        img: "public/img/",
+        img: "public/images/",
     },
 };
 
@@ -27,7 +27,6 @@ function compScss() {
 function compJs() {
     return gulp
         .src(paths.dev.js)
-        .pipe(concat("main.js"))
         .pipe(minify())
         .pipe(gulp.dest(paths.dist.js));
 }

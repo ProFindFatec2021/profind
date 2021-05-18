@@ -1,0 +1,27 @@
+.categorias {
+    padding: {
+        top: 3rem;
+        bottom: 3rem;
+    }
+
+    .title {
+        display: table;
+        margin: 0 auto;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    background-color: #888;
+    width: 20%;
+    margin: 5%;
+    display: block;
+    text-align: center;
+
+    &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+}

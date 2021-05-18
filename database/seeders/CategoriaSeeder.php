@@ -28,5 +28,15 @@ class CategoriaSeeder extends Seeder
             'id' => 3,
             'nome' => 'Mecânico'
         ]);
+
+        DB::table('categorias')->insert([
+            'id' => 4,
+            'nome' => 'Tecnologia'
+        ]);
+
+        DB::table('categorias')->insert([
+            'id' => 5,
+            'nome' => 'Aulas'
+        ]);
     }
 }

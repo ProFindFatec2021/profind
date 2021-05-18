@@ -1,0 +1,60 @@
+.header {
+    .nav {
+        @extend .container;
+        padding: {
+            top: 0.5rem;
+            bottom: 0.5rem;
+        }
+        display: flex;
+        justify-content: space-between;
+
+        .logo-header {
+            height: 80px;
+            width: auto;
+        }
+
+        .list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .item {
+                font-size: 1.25rem;
+                color: $dark-blue;
+                font-weight: 600;
+                position: relative;
+                margin-left: 0.5rem;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 0;
+                    height: 1px;
+                    background-color: $blue;
+                    transition: 0.2s;
+                }
+                &.bar {
+                    margin-left: 2rem;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: calc(-1rem - 1px);
+                        width: 2px;
+                        height: 100%;
+                        background-color: $light-blue;
+                    }
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

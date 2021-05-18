@@ -1,0 +1,1 @@
+$(".banner-slider").slick({slidesToShow:1,fade:!0,arrows:!1,autoplay:!0});
