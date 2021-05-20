@@ -45,6 +45,10 @@
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4" id="sidebar">
             <section class="sidebar">
+                <a href="{{ route('dashboard.index') }}" class="brand-link ">
+                    <img src="{{asset('images/logo-white.svg')}}" alt="ProFind" style="opacity:.8; width: 80%; height: auto;">
+                </a>
+
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
                     <div class="image">
                         @if(Auth::user()->foto_perfil)
@@ -63,25 +67,19 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                         <li class="nav-item">
-                            <a href="{{route('dashboard.index')}}" class="nav-link @if(Route::current()->getName() == "dashboard.index") active @endif">
+                            <a href="{{route('dashboard.index')}}" class="nav-link @if(Route::current()->getName() == " dashboard.index") active @endif">
                                 <i class="fas fa-lg fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item mt-auto">
-                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == "perfil") active @endif">
+                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == " perfil") active @endif">
                                 <i class="fas fa-lg fa-user-edit"></i>
                                 <p>Editar perfil</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == "anuncios") active @endif">
-                                <i class="fas fa-lg fa-list-ol"></i>
-                                <p>Anúncios</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == "pedidos") active @endif">
+                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == " pedidos") active @endif">
                                 <i class="fas fa-lg fa-tasks"></i>
                                 <p>Pedidos</p>
                                 <span class="badge badge-success right">{{ App\Models\Pedido::where('visto', false)->count() > 0 ?? null }}</span>
@@ -89,14 +87,14 @@
                         </li>
                         @if(Auth::user()->tipo == 1)
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == "anuncios") active @endif">
+                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(2) == " anuncios") active @endif">
                                 <i class="fas fa-lg fa-list-ol"></i>
                                 <p>Anúncios</p>
                             </a>
                         </li>
                         @endif
                         <li class="nav-item">
-                            <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == "chat") active @endif">
+                            <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == " chat") active @endif">
                                 <i class="fas fa-lg fa-comments"></i>
                                 <p>Chat</p>
                                 <span class="badge badge-success right">{{ App\Models\Chat::where([['visto', false], ['destinatario_id', Auth::id()]])->count() > 0 ?? null }}</span>
@@ -107,7 +105,7 @@
             </section>
         </aside>
 
-        <main class="p-4 pt-5 content-wrapper">
+        <main class="p-4 pt-5 mt-3 content-wrapper">
             @if ($errors->any())
             <ul class="alert alert-danger" role="alert">
                 @foreach ($errors->all() as $error)
@@ -170,9 +168,10 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js" integrity="sha512-AJUWwfMxFuQLv1iPZOTZX0N/jTCIrLxyZjTRKQostNU71MzZTEPHjajSK20Kj1TwJELpP7gl+ShXw5brpnKwEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/dashboard-min.js') }}" defer></script>
 
     @yield('scripts')
 </body>

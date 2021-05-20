@@ -79,7 +79,7 @@ class AnuncioController extends Controller
 
         $this->editarFotoAnuncio($request, $id);
 
-        return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio criado com sucesso');
+        return redirect()->route('dashboard.profissional.anuncio.edit', $id)->with('success', 'Anúncio criado com sucesso, agora edite a foto do mesmo');
     }
 
     public function edit($id)

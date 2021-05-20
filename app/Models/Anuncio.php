@@ -9,7 +9,7 @@ class Anuncio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'descricao', 'preco', 'usuario_id', 'categoria_id', 'foto_anuncio'];
+    protected $fillable = ['nome', 'descricao', 'preco', 'usuario_id', 'categoria_id'];
 
     public function categoria()
     {
@@ -19,5 +19,10 @@ class Anuncio extends Model
     public function usuario()
     {
         return $this->belongsTo(Usuario::class);
+    }
+
+    public function fotos()
+    {
+        return $this->hasMany(GaleriaAnuncio::class);
     }
 }

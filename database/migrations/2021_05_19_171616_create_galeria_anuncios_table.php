@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnunciosTable extends Migration
+class CreateGaleriaAnunciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateAnunciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('anuncios', function (Blueprint $table) {
+        Schema::create('galeria_anuncios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->text('descricao');
-            $table->integer('preco');
-            $table->foreignId('usuario_id')->constrained('usuarios');
-            $table->foreignId('categoria_id')->constrained('categorias');
+            $table->foreignId('anuncio_id')->constrained('anuncios');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateAnunciosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anuncios');
+        Schema::dropIfExists('galeria_anuncios');
     }
 }
