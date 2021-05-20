@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnuncioRequest;
 use App\Models\Anuncio;
 use App\Models\Categoria;
+use App\Models\GaleriaAnuncio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -64,22 +65,26 @@ class AnuncioController extends Controller
 
         $request->validated();
 
-        if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
-            $nome_imagem = Storage::put('anuncio', $request->foto_anuncio);
-
-
         $id = Anuncio::create([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
             'preco' => $request->preco,
             'usuario_id' => Auth::id(),
             'categoria_id' => $request->categoria,
-            'foto_anuncio' => $nome_imagem ?? null,
         ])->id;
+
+        if ($request->hasFile('fotos'))
+            foreach ($request->file('fotos') as $file) {
+                $nome_imagem = Storage::put('anuncio', $file);
+                GaleriaAnuncio::create([
+                    'anuncio_id' => $id,
+                    'foto' => $nome_imagem
+                ]);
+            }
 
         $this->editarFotoAnuncio($request, $id);
 
-        return redirect()->route('dashboard.profissional.anuncio.edit', $id)->with('success', 'Anúncio criado com sucesso, agora edite a foto do mesmo');
+        return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio criado com sucesso, agora edite a foto do mesmo');
     }
 
     public function edit($id)
