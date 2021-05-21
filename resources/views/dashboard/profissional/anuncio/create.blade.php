@@ -34,13 +34,9 @@
     </select>
   </div>
 
-
   <div class="form-group">
-    <label for="images">Imagens do anuncio</label>
-    <input type="file" name="fotos[]" name="fotos" class="form-control-file" id="images" multiple="multiple">
-  </div>
-
-  <div class="d-flex flex-wrap preview">
+    <label for="foto_anuncio">Foto do anuncio</label>
+    <input type="file" class="form-control-file" name="foto_anuncio" id="foto_anuncio">
   </div>
 
   <button type="submit" class="btn btn-primary">Criar anúncio</button>

@@ -37,7 +37,7 @@
   <div class="form-group">
     <label for="foto_anuncio" class="m-0">Foto do anúncio
       @if($anuncio->foto_anuncio)
-      <div class="image">
+      <div class="image-form">
         <img src="{{asset('storage/'.$anuncio->foto_anuncio)}}" id="foto" class="d-block" height="100" alt="Foto {{$anuncio->nome}}" />
         <div class="hover">
           <i class="fas fa-pen mr-2"></i>Editar foto

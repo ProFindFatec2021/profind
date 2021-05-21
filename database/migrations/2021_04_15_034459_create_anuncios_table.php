@@ -20,6 +20,7 @@ class CreateAnunciosTable extends Migration
             $table->integer('preco');
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('categoria_id')->constrained('categorias');
+            $table->string('foto_anuncio')->nullable();
             $table->timestamps();
         });
     }
