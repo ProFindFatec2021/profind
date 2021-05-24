@@ -35,7 +35,7 @@ class AnuncioController extends Controller
 
     public function index()
     {
-        return view('anuncio.index', ['anuncios' => Anuncio::all()]);
+        return view('dashboard.profissional.anuncio.index', ['anuncios' => Anuncio::where('usuario_id', Auth::id())->get()]);
     }
 
 
@@ -48,11 +48,6 @@ class AnuncioController extends Controller
                 'anuncio' => Anuncio::where('id', $id)->first(),
                 'usuario' => Usuario::where('id', Auth::id())->first()
             ]);
-    }
-
-    public function indexPerfil()
-    {
-        return view('dashboard.profissional.anuncio.index', ['anuncios' => Anuncio::where('usuario_id', Auth::id())->get()]);
     }
 
     public function create()

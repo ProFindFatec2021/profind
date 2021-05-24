@@ -22,6 +22,7 @@
               <p class="text-muted text-sm"><b>Categoria:</b> {{$anuncio->categoria->nome}}</p>
               <p class="text-muted text-sm"><b>Preço:</b> R${{$anuncio->preco}}</p>
               <p class="text-muted text-sm"><b>Descriçao:</b> {{$anuncio->descricao}}</p>
+              <p class="text-muted text-sm"><b>Nota média:</b> {{$anuncio->avaliacoes->avg('avaliacao') ?? '-'}}</p>
             </div>
             <div class="col-md-5">
               @if($anuncio->foto_anuncio)

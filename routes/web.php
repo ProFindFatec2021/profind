@@ -33,7 +33,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
 
     Route::name('profissional.')->prefix('profissional')->middleware('usuario.profissional')->group(function () {
         Route::prefix('anuncios')->name('anuncio.')->group(function () {
-            Route::get('/', [AnuncioController::class, 'indexPerfil'])->name('index');
+            Route::get('/', [AnuncioController::class, 'index'])->name('index');
             Route::delete('/', [AnuncioController::class, 'destroy'])->name('destroy');
             Route::get('/criar', [AnuncioController::class, 'create'])->name('create');
             Route::post('/criar', [AnuncioController::class, 'store'])->name('store');

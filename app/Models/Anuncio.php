@@ -20,4 +20,9 @@ class Anuncio extends Model
     {
         return $this->belongsTo(Usuario::class);
     }
+
+    public function avaliacoes()
+    {
+        return $this->hasMany(Avaliacao::class);
+    }
 }
