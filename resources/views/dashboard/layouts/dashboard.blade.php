@@ -92,6 +92,12 @@
                                 <p>Anúncios</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('dashboard.profissional.avaliacao.index')}}" class="nav-link @if(Request::segment(3) == "avaliacoes") active @endif">
+                                <i class="fas fa-lg fa-star"></i>
+                                <p>Avaliações</p>
+                            </a>
+                        </li>
                         @endif
                         <li class="nav-item">
                             <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == "chat") active @endif">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\AvaliacaoController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,10 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
             Route::post('/criar', [AnuncioController::class, 'store'])->name('store');
             Route::get('/anuncio/{id}', [AnuncioController::class, 'edit'])->name('edit');
             Route::put('/anuncio/{id}', [AnuncioController::class, 'update'])->name('update');
+        });
+
+        Route::prefix('avaliacoes')->name('avaliacao.')->group(function(){
+            Route::get('/', [AvaliacaoController::class, 'index'])->name('index');
         });
     });
 
