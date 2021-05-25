@@ -5,7 +5,7 @@
 
 @section('content')
 
-<table class="table table-striped table-hover table-bordered">
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Anúncio</th>
