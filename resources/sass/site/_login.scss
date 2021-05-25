@@ -1,0 +1,62 @@
+.loginScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        background-color: rgba($light-blue, 0.2);
+        border: 1px solid $light-blue;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+
+        .title {
+          text-align: center;
+          margin-bottom: 1.5rem;
+          text-transform: uppercase;
+          font-size: 1.5rem;
+          color: $dark-blue;
+        }
+
+        label {
+          color: $dark-blue;
+        }
+
+        input {
+            margin-bottom: 1rem;
+            border: none;
+            border-bottom: 1px solid $dark-blue;
+        }
+
+        button {
+            padding: 0.25rem;
+            background-color: $blue;
+            color: $light-blue;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.2s;
+            border: 1px solid $blue;
+
+            &:hover {
+                background-color: $light-blue;
+                color: $blue;
+                border-color: $dark-blue;
+            }
+        }
+
+        &:hover,
+        &:focus-within {
+            background-color: rgba($light-blue, 0.5);
+        }
+    }
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: -1;
+}
