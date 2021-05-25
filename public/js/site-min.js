@@ -1,1 +1,1 @@
-$(".banner-slider").slick({slidesToShow:1,fade:!0,arrows:!1,autoplay:!0});
+$(".banner-slider").slick({slidesToShow:1,fade:!0,arrows:!1,autoplay:!0});var SPMaskBehavior=function(a){return 11===a.replace(/\D/g,"").length?"(00) 00000-0000":"(00) 0000-00009"},spOptions={onKeyPress:function(a,e,s,o){s.mask(SPMaskBehavior.apply({},arguments),o)}};$("#telefone").mask(SPMaskBehavior,spOptions);

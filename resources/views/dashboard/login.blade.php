@@ -3,6 +3,9 @@
 @section('content')
 <section class="loginScreen">
   <form class="form" method="POST" class="form">
+    @if (Session::has('success'))
+      <span class="success">{{ Session::get('success')}}</span>
+    @endif
     <h2 class="title">Entrar</h2>
     @csrf
     <label for="email">Email:</label>

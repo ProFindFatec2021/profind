@@ -18,8 +18,8 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('authentic
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
+Route::post('/cadastro-usuario', [UsuarioController::class, 'store'])->name('usuario.store');
 Route::name('usuario.create.')->group(function () {
-    Route::post('/cadastro-usuario', [UsuarioController::class, 'store'])->name('store');
     Route::get('/cadastro-cliente', [UsuarioController::class, 'create'])->name('cliente');
     Route::get('/cadastro-profissional', [UsuarioController::class, 'create'])->name('profissional');
 });

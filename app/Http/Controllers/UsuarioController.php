@@ -43,7 +43,6 @@ class UsuarioController extends Controller
 
     public function store(StoreUsuarioRequest $request)
     {
-        $request->validated();
 
         if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid())
             $nome_imagem = Storage::put('usuarios/perfil', $request->foto_perfil);
@@ -56,7 +55,8 @@ class UsuarioController extends Controller
             'tipo' => $request->tipo,
             'foto_perfil' => $nome_imagem ?? null,
         ]);
-        return redirect()->route('login');
+
+        return redirect()->route('login')->with('success', 'Conta criada com sucesso');
     }
 
     public function perfil(Usuario $usuario)
