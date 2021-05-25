@@ -48,7 +48,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
         
         Route::prefix('portfolios')->name('portfolio.')->group(function(){
             Route::get('/', [PortfolioController::class, 'index'])->name('index');
-            Route::delete('/', [PortfolioController::class, 'destroy'])->name('index');
+            Route::delete('/', [PortfolioController::class, 'destroy'])->name('destroy');
             Route::get('/criar', [PortfolioController::class, 'create'])->name('create');
             Route::post('/criar', [PortfolioController::class, 'store'])->name('store');
         });
