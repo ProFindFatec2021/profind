@@ -32,7 +32,10 @@
           </div>
         </div>
         <div class="card-footer d-flex justify-content-end">
-          <a href="{{route('dashboard.profissional.anuncio.edit', $anuncio->id)}}" class="btn btn-sm btn-primary">
+          <a href="{{route('dashboard.profissional.portfolio.create', ['anuncio' => $anuncio->id])}}" class="btn btn-sm btn-success">
+            <i class="fas fa-plus fa-lg"></i>
+          </a>
+          <a href="{{route('dashboard.profissional.anuncio.edit', $anuncio->id)}}" class="btn btn-sm btn-primary ml-2">
             <i class="fas fa-edit fa-lg"></i>
           </a>
           <form method="POST">

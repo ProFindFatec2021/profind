@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SiteController;
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
@@ -43,6 +44,13 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('usuario')->group(fun
 
         Route::prefix('avaliacoes')->name('avaliacao.')->group(function(){
             Route::get('/', [AvaliacaoController::class, 'index'])->name('index');
+        });
+        
+        Route::prefix('portfolios')->name('portfolio.')->group(function(){
+            Route::get('/', [PortfolioController::class, 'index'])->name('index');
+            Route::delete('/', [PortfolioController::class, 'destroy'])->name('index');
+            Route::get('/criar', [PortfolioController::class, 'create'])->name('create');
+            Route::post('/criar', [PortfolioController::class, 'store'])->name('store');
         });
     });
 

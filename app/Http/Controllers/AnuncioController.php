@@ -60,10 +60,6 @@ class AnuncioController extends Controller
 
         $request->validated();
 
-        if ($request->hasFile('foto_anuncio') && $request->file('foto_anuncio')->isValid())
-            $nome_imagem = Storage::put('anuncio', $request->foto_anuncio);
-
-
         $id = Anuncio::create([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
@@ -75,7 +71,7 @@ class AnuncioController extends Controller
 
         $this->editarFotoAnuncio($request, $id);
 
-        return redirect()->route('dashboard.profissional.anuncio.edit', $id)->with('success', 'Anúncio criado com sucesso, agora edite a foto do mesmo');
+        return redirect()->route('dashboard.profissional.anuncio.index')->with('success', 'Anúncio criado com sucesso');
     }
 
     public function edit($id)
