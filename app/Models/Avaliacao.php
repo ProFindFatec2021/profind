@@ -13,6 +13,7 @@ class Avaliacao extends Model
         'anuncio_id',
         'profissional_id',
         'avaliacao',
+        'descricao',
         'anuncio_id'
     ];
 

@@ -10,6 +10,7 @@
     <tr>
       <th>Anúncio</th>
       <th>Avaliação</th>
+      <th>Descrição</th>
       <th>Cliente</th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
     <tr>
       <td><a href="{{ route('dashboard.profissional.anuncio.edit', $avaliacao->anuncio->id) }}">{{$avaliacao->anuncio->nome}}</a></td>
       <td>{{$avaliacao->avaliacao}}</td>
+      <td>{{$avaliacao->descricao}}</td>
       <td>{{$avaliacao->cliente->nome}}</td>
     </tr>
     @endforeach

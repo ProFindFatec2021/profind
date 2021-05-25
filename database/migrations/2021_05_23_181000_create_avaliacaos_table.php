@@ -19,6 +19,7 @@ class CreateAvaliacaosTable extends Migration
             $table->foreignId('cliente_id')->constrained('usuarios');
             $table->foreignId('profissional_id')->constrained('usuarios');
             $table->float('avaliacao', 2, 2);
+            $table->text('descricao')->nullable();
             $table->timestamps();
         });
     }
