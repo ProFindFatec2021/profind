@@ -14,16 +14,16 @@
         @csrf
         <input type="hidden" name="tipo" value="{{Route::currentRouteName() == 'usuario.create.profissional' ? 1 : 0}}">
         <label for="nome">Nome</label>
-        <input type="text" placeholder="Nome" name="nome" id="nome">
+        <input type="text" placeholder="Nome" name="nome" id="nome" value="{{old('nome')}}">
 
         <label for="telefone">Telefone</label>
-        <input type="text" placeholder="Telefone" name="telefone" id="telefone">
+        <input type="text" placeholder="Telefone" name="telefone" id="telefone" value="{{old('telefone')}}">
 
         <label for="email">Email</label>
-        <input type="email" placeholder="Email" name="email" id="email">
+        <input type="email" placeholder="Email" name="email" id="email" value="{{old('email')}}">
 
         <label for="senha">Senha</label>
-        <input type="password" placeholder="Senha" name="senha" id="senha">
+        <input type="password" placeholder="Senha" name="senha" id="senha" value="{{old('senha')}}">
 
         <label for="foto_perfil">Foto de perfil</label>
         <input type="file" class="form-control-file" name="foto_perfil" id="foto_perfil">

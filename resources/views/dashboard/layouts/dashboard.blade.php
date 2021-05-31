@@ -8,13 +8,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
+
+    <title>Dashboard | ProFind</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -67,19 +69,19 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                         <li class="nav-item">
-                            <a href="{{route('dashboard.index')}}" class="nav-link @if(Route::current()->getName() == "dashboard.index") active @endif">
+                            <a href="{{route('dashboard.index')}}" class="nav-link @if(Route::current()->getName() == " dashboard.index") active @endif">
                                 <i class="fas fa-lg fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item mt-auto">
-                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == "perfil") active @endif">
+                            <a href="{{ route('dashboard.perfil.perfil') }}" class="nav-link @if(Request::segment(2) == " perfil") active @endif">
                                 <i class="fas fa-lg fa-user-edit"></i>
                                 <p>Editar perfil</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == "pedidos") active @endif">
+                            <a href="{{route('dashboard.pedido.index')}}" class="nav-link @if(Request::segment(2) == " pedidos") active @endif">
                                 <i class="fas fa-lg fa-tasks"></i>
                                 <p>Pedidos</p>
                                 <span class="badge badge-success right">{{ App\Models\Pedido::where('visto', false)->count() > 0 ?? null }}</span>
@@ -87,26 +89,26 @@
                         </li>
                         @if(Auth::user()->tipo == 1)
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(3) == "anuncios") active @endif">
+                            <a href="{{route('dashboard.profissional.anuncio.index')}}" class="nav-link @if(Request::segment(3) == " anuncios") active @endif">
                                 <i class="fas fa-lg fa-list-ol"></i>
                                 <p>Anúncios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.portfolio.index')}}" class="nav-link @if(Request::segment(3) == "portfolios") active @endif">
+                            <a href="{{route('dashboard.profissional.portfolio.index')}}" class="nav-link @if(Request::segment(3) == " portfolios") active @endif">
                                 <i class="fas fa-lg fa-sitemap"></i>
                                 <p>Portfolio</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.profissional.avaliacao.index')}}" class="nav-link @if(Request::segment(3) == "avaliacoes") active @endif">
+                            <a href="{{route('dashboard.profissional.avaliacao.index')}}" class="nav-link @if(Request::segment(3) == " avaliacoes") active @endif">
                                 <i class="fas fa-lg fa-star"></i>
                                 <p>Avaliações</p>
                             </a>
                         </li>
                         @endif
                         <li class="nav-item">
-                            <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == "chat") active @endif">
+                            <a href="{{ route('dashboard.chat.index') }}" class="nav-link @if(Request::segment(2) == " chat") active @endif">
                                 <i class="fas fa-lg fa-comments"></i>
                                 <p>Chat</p>
                                 <span class="badge badge-success right">{{ App\Models\Chat::where([['visto', false], ['destinatario_id', Auth::id()]])->count() > 0 ?? null }}</span>

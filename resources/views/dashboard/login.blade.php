@@ -6,6 +6,9 @@
     @if (Session::has('success'))
       <span class="success">{{ Session::get('success')}}</span>
     @endif
+    @if (Session::has('error'))
+      <span class="error">{{ Session::get('error')}}</span>
+    @endif
     <h2 class="title">Entrar</h2>
     @csrf
     <label for="email">Email:</label>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AnuncioRequest;
 use App\Models\Anuncio;
+use App\Models\Avaliacao;
 use App\Models\Categoria;
 use App\Models\Pedido;
+use App\Models\Portfolio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -97,7 +99,9 @@ class AnuncioController extends Controller
 
     public function destroy(Request $request)
     {
+        Portfolio::where('anuncio_id', $request->id)->delete();
         Pedido::where('anuncio_id', $request->id)->delete();
+        Avaliacao::where('anuncio_id', $request->id)->delete();
         Anuncio::where('id', $request->id)->delete();
 
         return redirect()->route('dashboard.profissional.anuncio.index')->with('error', 'Anúncio deletado com sucesso');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PortfolioRequest;
 use App\Models\Anuncio;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class PortfolioController extends Controller
         return view('dashboard.profissional.portfolio.create', ['anuncios' => $anuncios]);
     }
 
-    public function store(Request $request)
+    public function store(PortfolioRequest $request)
     {
         $id = Portfolio::create([
             'anuncio_id' => $request->anuncio_id,

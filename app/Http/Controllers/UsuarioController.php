@@ -81,7 +81,7 @@ class UsuarioController extends Controller
             'tipo' => $request->tipo ? 1 : 0,
         ]);
 
-        return redirect()->route('dashboard.perfil.perfil');
+        return redirect()->route('dashboard.perfil.perfil')->with('success', 'Perfil editado com sucesso');
     }
 
     public function show($id)
