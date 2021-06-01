@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
 use App\Models\Anuncio;
+use App\Models\Avaliacao;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,11 +69,6 @@ class UsuarioController extends Controller
     public function update(UpdateUsuarioRequest $request)
     {
         $this->editarFotoPerfil($request);
-
-        $request->validated();
-
-        if (!$request->tipo)
-            Anuncio::where('usuario_id', Auth::id())->delete();
 
         Usuario::where('id', Auth::id())->update([
             'nome' => $request->nome,
