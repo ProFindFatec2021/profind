@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/site.css')}}">
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- <link rel="stylesheet" href="../public/css/index.css"> -->
+
     <title>ProFind</title>
 </head>
 <header class="header">
@@ -36,7 +40,22 @@
 
 <body>
     <main>
-        @yield('content')
+        <!-- @yield('content') -->
+        <div class="section hero">
+        <div class="hero_left">
+            <div class="title_main">
+                Conectamos quem sabe <br>com quem precisa.
+            </div>
+            <div class="subtitle">
+                Se voce procura alguem procure conosco.
+            </div>
+            <input class="input_search" type="text" name="search" placeholder="Digite o que procura">
+        <input class="submit_search" type="submit" value="Buscar">
+        </div>
+        <div class="hero_right">
+            <img src="assets/images/martelo-de-unha.png" alt="martelo-de-unha" id="image-hero">
+        </div>
+        </div>
     </main>
 
 
