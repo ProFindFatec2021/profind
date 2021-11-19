@@ -56,6 +56,7 @@
                 <img src="assets/images/martelo-de-unha.png" alt="martelo-de-unha" id="image-hero">
             </div>
         </div>
+
         <div class="section services">
             <div class="title">Principais Serviços</div>
             <div class="card-emphasis">
@@ -92,6 +93,48 @@
                     Solicite um Orçamento   
                 </div>
             </div>
+            </div>
+        </div>
+
+        <div class="section feedback">
+            <div class="title">Alguns feedbacks para convencer voce</div>
+            <div class="feedbacks">
+                <div class="feedback-card">
+                    <i class="uil uil-comment-alt-share"></i>
+                    <span>Fui muito bem atendida, 
+                        o profissional foi muito educado 
+                        e fez um trabalho de qualidade. 
+                        Valeu a pena, orçamento grátis 
+                        e não é careiro. <br><br>
+        
+                        <strong>Serviço de Pedreiro</strong>,
+                        Ana Paula Contratou um 
+                        Pedreiro em São Paulo, SP</span>
+                </div>
+                <div class="feedback-card">
+                    <i class="uil uil-comment-alt-share"></i>
+                    <span>Fui muito bem atendida, 
+                        o profissional foi muito educado 
+                        e fez um trabalho de qualidade. 
+                        Valeu a pena, orçamento grátis 
+                        e não é careiro. <br><br>
+        
+                        <strong>Serviço de Pedreiro</strong>,
+                        Ana Paula Contratou um 
+                        Pedreiro em São Paulo, SP</span>
+                </div>
+                <div class="feedback-card">
+                    <i class="uil uil-comment-alt-share"></i>
+                    <span>Fui muito bem atendida, 
+                        o profissional foi muito educado 
+                        e fez um trabalho de qualidade. 
+                        Valeu a pena, orçamento grátis 
+                        e não é careiro. <br><br>
+        
+                        <strong>Serviço de Pedreiro</strong>,
+                        Ana Paula Contratou um 
+                        Pedreiro em São Paulo, SP</span>
+                </div>
             </div>
         </div>
     </main>
