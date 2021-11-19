@@ -42,19 +42,57 @@
     <main>
         <!-- @yield('content') -->
         <div class="section hero">
-        <div class="hero_left">
-            <div class="title_main">
-                Conectamos quem sabe <br>com quem precisa.
+            <div class="hero_left">
+                <div class="title_main">
+                    Conectamos quem sabe <br>com quem precisa.
+                </div>
+                <div class="subtitle">
+                    Se voce procura alguem procure conosco.
+                </div>
+                <input class="input_search" type="text" name="search" placeholder="Digite o que procura">
+                <input class="submit_search" type="submit" value="Buscar">
             </div>
-            <div class="subtitle">
-                Se voce procura alguem procure conosco.
+            <div class="hero_right">
+                <img src="assets/images/martelo-de-unha.png" alt="martelo-de-unha" id="image-hero">
             </div>
-            <input class="input_search" type="text" name="search" placeholder="Digite o que procura">
-        <input class="submit_search" type="submit" value="Buscar">
         </div>
-        <div class="hero_right">
-            <img src="assets/images/martelo-de-unha.png" alt="martelo-de-unha" id="image-hero">
-        </div>
+        <div class="section services">
+            <div class="title">Principais Serviços</div>
+            <div class="card-emphasis">
+            <div class="card">
+                <div class="image-card">
+                    <img src="assets/images/Marceneiro-Trabalhando.jpg" id="image-card" alt="Marceneiro-Trabalhando">
+                </div>
+                <div class="card-text">
+                    Marcenaria
+                </div>
+                <div class="card-text card-budget">
+                    Solicite um Orçamento   
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-card">
+                    <img src="assets/images/Marceneiro-Trabalhando.jpg" id="image-card" alt="Marceneiro-Trabalhando">
+                </div>
+                <div class="card-text">
+                    Marcenaria
+                </div>
+                <div class="card-text card-budget">
+                    Solicite um Orçamento   
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-card">
+                    <img src="assets/images/Marceneiro-Trabalhando.jpg" id="image-card" alt="Marceneiro-Trabalhando">
+                </div>
+                <div class="card-text">
+                    Marcenaria
+                </div>
+                <div class="card-text card-budget">
+                    Solicite um Orçamento   
+                </div>
+            </div>
+            </div>
         </div>
     </main>
 
